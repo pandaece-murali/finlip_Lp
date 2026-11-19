@@ -313,8 +313,82 @@ export default function FinlipSecurityLandingPage() {
     setOpenFaqIndex(openFaqIndex === idx ? null : idx);
   };
 
+  const lpJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.finlipsecurity.com",
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Finlip Security Academy",
+            "item": "https://www.finlipsecurity.com/finlip-security-academy",
+          },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": faqs.map((f) => ({
+          "@type": "Question",
+          "name": f.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": f.a,
+          },
+        })),
+      },
+      {
+        "@type": "Course",
+        "name": "Options Trading & Greeks Mastery",
+        "description": "Decode Delta, Theta, Vega & Gamma with practical live charts, open interest analysis, and zero-loss hedging mechanics.",
+        "provider": {
+          "@type": "Organization",
+          "name": "Finlip Security Market Academy",
+          "sameAs": "https://www.finlipsecurity.com",
+        },
+        "instructor": {
+          "@type": "Person",
+          "name": "Rahul Rathore",
+          "jobTitle": "NISM Series VIII Certified Faculty",
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "12400",
+          "bestRating": "5",
+        },
+      },
+      {
+        "@type": "Course",
+        "name": "Technical Analysis Pro Masterclass",
+        "description": "Master candlestick geometry, volume profile, institutional accumulation, and live morning market trading.",
+        "provider": {
+          "@type": "Organization",
+          "name": "Finlip Security Market Academy",
+          "sameAs": "https://www.finlipsecurity.com",
+        },
+        "instructor": {
+          "@type": "Person",
+          "name": "Rahul Rathore",
+          "jobTitle": "NISM Series VIII Certified Faculty",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-emerald-600 selection:text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(lpJsonLd) }}
+      />
       {/* Top Credentials & Emergency Bar */}
       <div className="bg-slate-900 text-white text-xs py-2 px-4 text-center">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-2">

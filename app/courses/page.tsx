@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import MarketTicker from "@/components/MarketTicker";
 import LeadModal from "@/components/LeadModal";
 import {
   BookOpen,
@@ -61,7 +60,7 @@ export default function CoursesPage() {
             "Trade execution inside live market hours. Calculating exact position sizing, setting trailing stop-losses, and managing psychological discipline.",
         },
       ],
-      tools: ["TradingView Pro", "Chartink Custom Screeners", "NSE Live Chain"],
+      tools: ["TradingView Pro", "Chartink Custom Screeners", "Live Option Chain"],
     },
     {
       id: "options",
@@ -179,7 +178,6 @@ export default function CoursesPage() {
   return (
     <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans">
       <Navbar onOpenModal={openModal} />
-      <MarketTicker />
 
       {/* Header Banner */}
       <section className="py-12 sm:py-16 bg-gradient-to-b from-slate-50 via-white to-white border-b border-slate-200">

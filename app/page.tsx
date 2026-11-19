@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import MarketTicker from "@/components/MarketTicker";
 import LeadModal from "@/components/LeadModal";
 import PositionCalculator from "@/components/PositionCalculator";
 import FaqSection from "@/components/FaqSection";
@@ -131,7 +130,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-emerald-600 selection:text-white">
       <Navbar onOpenModal={openLeadModal} />
-      <MarketTicker />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-8 pb-16 lg:pt-16 lg:pb-24 border-b border-slate-200 bg-gradient-to-b from-slate-50/70 via-white to-white">

@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import MarketTicker from "@/components/MarketTicker";
 import {
   Phone,
   Mail,
@@ -37,7 +36,6 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans">
       <Navbar />
-      <MarketTicker />
 
       {/* Header */}
       <section className="py-14 sm:py-20 bg-gradient-to-b from-slate-50 via-white to-white border-b border-slate-200">

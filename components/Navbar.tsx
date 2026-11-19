@@ -79,7 +79,7 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
               <Award className="w-3 h-3 text-emerald-400" /> NISM CERTIFIED FACULTY: Series VIII (Equity Derivatives)
             </span>
             <span className="hidden sm:inline text-slate-600">|</span>
-            <span className="text-slate-200 font-medium">Finlip Security Market Academy</span>
+            <span className="text-slate-200 font-medium">Finlip Security Academy</span>
             <span className="hidden sm:inline text-slate-600">|</span>
             <span className="text-slate-400 hidden lg:inline">NSE & BSE Authorised Person Affiliated</span>
           </div>
@@ -147,17 +147,15 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
                   >
                     <Link
                       href={item.href}
-                      className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all ${
-                        isActive
-                          ? "text-emerald-700 bg-emerald-50"
-                          : "text-slate-700 hover:text-emerald-600 hover:bg-slate-50"
-                      }`}
+                      className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all ${isActive
+                        ? "text-emerald-700 bg-emerald-50"
+                        : "text-slate-700 hover:text-emerald-600 hover:bg-slate-50"
+                        }`}
                     >
                       <span>{item.name}</span>
                       <ChevronDown
-                        className={`w-4 h-4 transition-transform duration-200 ${
-                          coursesDropdown ? "rotate-180 text-emerald-600" : ""
-                        }`}
+                        className={`w-4 h-4 transition-transform duration-200 ${coursesDropdown ? "rotate-180 text-emerald-600" : ""
+                          }`}
                       />
                     </Link>
 
@@ -206,11 +204,10 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all ${
-                    isActive
-                      ? "text-emerald-700 bg-emerald-50"
-                      : "text-slate-700 hover:text-emerald-600 hover:bg-slate-50"
-                  }`}
+                  className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all ${isActive
+                    ? "text-emerald-700 bg-emerald-50"
+                    : "text-slate-700 hover:text-emerald-600 hover:bg-slate-50"
+                    }`}
                 >
                   {item.name}
                 </Link>
@@ -263,11 +260,10 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
                 <Link
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-3 py-2.5 rounded-lg text-base font-medium ${
-                    pathname === item.href
-                      ? "text-emerald-700 bg-emerald-50"
-                      : "text-slate-800 hover:bg-slate-50"
-                  }`}
+                  className={`block px-3 py-2.5 rounded-lg text-base font-medium ${pathname === item.href
+                    ? "text-emerald-700 bg-emerald-50"
+                    : "text-slate-800 hover:bg-slate-50"
+                    }`}
                 >
                   {item.name}
                 </Link>
