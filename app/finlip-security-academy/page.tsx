@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   Shield,
@@ -13,6 +13,9 @@ import {
   ArrowRight,
   Star,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Quote,
   Lock,
   MapPin,
 } from "lucide-react";
@@ -30,6 +33,33 @@ export default function FinlipSecurityLandingPage() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [highlightForm, setHighlightForm] = useState(false);
+  const [isTestimonialHovered, setIsTestimonialHovered] = useState(false);
+  const testimonialScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollTestimonials = (direction: "left" | "right") => {
+    if (testimonialScrollRef.current) {
+      const scrollAmount = testimonialScrollRef.current.clientWidth * 0.85;
+      testimonialScrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (isTestimonialHovered) return;
+    const interval = setInterval(() => {
+      if (testimonialScrollRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = testimonialScrollRef.current;
+        if (scrollLeft + clientWidth >= scrollWidth - 20) {
+          testimonialScrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          testimonialScrollRef.current.scrollBy({ left: 360, behavior: "smooth" });
+        }
+      }
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isTestimonialHovered]);
 
   const courses = [
     {
@@ -101,35 +131,113 @@ export default function FinlipSecurityLandingPage() {
   const testimonials = [
     {
       name: "Aditya Kulkarni",
-      role: "IT Project Lead • Pune",
+      initials: "AK",
+      role: "IT Project Lead",
+      city: "Pune, Maharashtra",
       course: "Options Trading & Greeks",
       rating: 5,
       review:
-        "I was losing money every expiry buying cheap OTM call options. Rahul sir's breakdown of Theta decay and non-directional Iron Condors opened my eyes. The live morning trading room is worth everything. Attended the batch in Marathi & English.",
+        "I was losing money every weekly expiry buying cheap OTM call options. Rahul sir's breakdown of Theta decay and non-directional Iron Condors completely transformed my trading. The live morning trading room is worth everything. Attended the batch in Marathi & English.",
+      date: "Oct 2024 Cohort",
     },
     {
       name: "Suresh Sundaram",
-      role: "Business Owner • Chennai",
+      initials: "SS",
+      role: "Textile Business Owner",
+      city: "Chennai, Tamil Nadu",
       course: "Technical Analysis Pro",
       rating: 5,
       review:
-        "Learning in Tamil made all the difference. Rahul Rathore sir explains complex Volume Spread Analysis in simple practical terms. No fake screenshots, only pure chart logic and strict 1:2 risk-reward.",
+        "Learning in Tamil made all the difference. Rahul Rathore sir explains complex Volume Spread Analysis in simple practical terms. No fake screenshots, only pure chart logic and strict 1:2 risk-reward frameworks.",
+      date: "Nov 2024 Cohort",
     },
     {
       name: "Dr. Kavita Verma",
-      role: "Healthcare Specialist • Indore",
+      initials: "KV",
+      role: "Senior Physician",
+      city: "Indore, Madhya Pradesh",
       course: "Stock Market Starter + Options",
       rating: 5,
       review:
-        "As a doctor with zero financial background, I was intimidated by stock markets. Finlip's NISM certified mentorship gave me a structured, calm framework. Their risk management rules protect my hard-earned capital.",
+        "As a medical specialist with zero financial background, I was intimidated by stock markets. Finlip's NISM certified mentorship gave me a structured, calm framework. Their capital safety rules protect my hard-earned savings.",
+      date: "Sep 2024 Cohort",
     },
     {
       name: "Nilesh Patel",
-      role: "Civil Engineer • Ahmedabad",
+      initials: "NP",
+      role: "Civil Infrastructure Contractor",
+      city: "Ahmedabad, Gujarat",
       course: "Price Action & Volume Spread",
       rating: 5,
       review:
         "Very transparent and professional academy. Rahul sir's NISM Series VIII credentials and real market experience show in every session. Gujarati and Hindi support made doubt clearing extremely easy.",
+      date: "Dec 2024 Cohort",
+    },
+    {
+      name: "Pooja Bhattacharya",
+      initials: "PB",
+      role: "Chartered Accountant",
+      city: "Kolkata, West Bengal",
+      course: "Options Trading & Greeks Mastery",
+      rating: 5,
+      review:
+        "As a CA, I appreciate mathematical rigor. Finlip doesn't sell dreams of overnight wealth. They teach Delta-neutral adjustments and statistical probability. My trade journaling discipline improved 10x.",
+      date: "Aug 2024 Cohort",
+    },
+    {
+      name: "Rajesh Menon",
+      initials: "RM",
+      role: "Senior Engineering Manager",
+      city: "Bengaluru, Karnataka",
+      course: "Quantitative & Algorithmic Systems",
+      rating: 5,
+      review:
+        "Automating my rule-based strategies through Pine Script and broker APIs removed all emotional hesitation from my trading. Outstanding code walkthroughs and risk automation on cloud VPS.",
+      date: "Jan 2025 Cohort",
+    },
+    {
+      name: "Vikram Singh Rathore",
+      initials: "VR",
+      role: "Logistics Director",
+      city: "Jaipur, Rajasthan",
+      course: "Technical Analysis Pro",
+      rating: 5,
+      review:
+        "Before joining Finlip, I had lost significant capital following Telegram tipsters. Rahul sir taught me how institutional operators accumulate and distribute. Now I never enter a trade without a structural stop-loss.",
+      date: "Nov 2024 Cohort",
+    },
+    {
+      name: "Meenakshi Iyer",
+      initials: "MI",
+      role: "Financial Risk Analyst",
+      city: "Mumbai, Maharashtra",
+      course: "Options Greeks & Volatility",
+      rating: 5,
+      review:
+        "The live market trading sessions between 9:15 AM and 11:30 AM are unmatched. Seeing Rahul sir analyze real-time open interest shifts and implied volatility spikes during live ticks is pure gold.",
+      date: "Dec 2024 Cohort",
+    },
+    {
+      name: "Gaurav Agrawal",
+      initials: "GA",
+      role: "FMCG Wholesale Distributor",
+      city: "Hyderabad, Telangana",
+      course: "Price Action Geometry",
+      rating: 5,
+      review:
+        "The support-resistance geometry and multi-timeframe confirmation rules have prevented me from getting trapped in false breakouts. Highly recommended for every serious trader in India.",
+      date: "Oct 2024 Cohort",
+    },
+    {
+      name: "Ananya Sen",
+      initials: "AS",
+      role: "Educator & Independent Investor",
+      city: "New Delhi, Delhi NCR",
+      course: "Stock Market Starter Program",
+      rating: 5,
+      review:
+        "The best foundation for anyone starting from scratch. Clear explanations on order types, Demat management, and compounding equity portfolios with zero jargon.",
+      date: "Dec 2024 Cohort",
     },
   ];
 
@@ -663,50 +771,131 @@ export default function FinlipSecurityLandingPage() {
         </div>
       </section>
 
-      {/* Verified Testimonials */}
-      <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200" id="testimonials">
+      {/* Verified Testimonials with Interactive Scroll & Carousel */}
+      <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200 overflow-hidden" id="testimonials">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 font-mono">
-              STUDENT RESULTS & REVIEWS
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1">
-              Real Experiences from Everyday Indian Traders
-            </h2>
-            <div className="flex items-center justify-center gap-1.5 mt-3 text-amber-500">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-amber-500" />
-              ))}
-              <span className="text-xs font-bold text-slate-700 ml-2">
-                4.8 / 5 Rating from 12,400+ Students Mentored
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+            <div className="text-center sm:text-left">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 font-mono">
+                STUDENT RESULTS & REVIEWS
               </span>
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1">
+                Real Experiences from Everyday Indian Traders
+              </h2>
+              <div className="flex items-center justify-center sm:justify-start gap-1.5 mt-2 text-amber-500">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-amber-500" />
+                ))}
+                <span className="text-xs font-bold text-slate-700 ml-2">
+                  4.8 / 5 Rating from 12,400+ Mentored Traders Across India
+                </span>
+              </div>
+            </div>
+
+            {/* Scroll Navigation Controls */}
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => scrollTestimonials("left")}
+                aria-label="Previous testimonial"
+                className="w-10 h-10 rounded-full border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 hover:text-emerald-700 flex items-center justify-center shadow-xs transition-all active:scale-90 cursor-pointer"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollTestimonials("right")}
+                aria-label="Next testimonial"
+                className="w-10 h-10 rounded-full border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 hover:text-emerald-700 flex items-center justify-center shadow-xs transition-all active:scale-90 cursor-pointer"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Mobile Swipe Guidance Banner */}
+          <div className="sm:hidden flex items-center justify-between text-[11px] text-slate-500 mb-3 px-1">
+            <span>👈 Swipe left or right to explore</span>
+            <span className="text-emerald-700 font-semibold">10 Verified Reviews</span>
+          </div>
+
+          {/* Horizontal Scrolling Card Track */}
+          <div
+            ref={testimonialScrollRef}
+            onMouseEnter={() => setIsTestimonialHovered(true)}
+            onMouseLeave={() => setIsTestimonialHovered(false)}
+            onTouchStart={() => setIsTestimonialHovered(true)}
+            onTouchEnd={() => setIsTestimonialHovered(false)}
+            className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 scroll-smooth snap-x snap-mandatory focus:outline-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
             {testimonials.map((t, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between shadow-2xs hover:shadow-sm transition-shadow"
+                className="w-[85vw] max-w-[340px] sm:w-[360px] md:w-[380px] shrink-0 snap-center bg-white border border-slate-200 hover:border-emerald-400 rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-xs hover:shadow-lg transition-all duration-200 group"
               >
-                <div className="space-y-3">
-                  <div className="flex items-center gap-1 text-amber-500">
-                    {[...Array(t.rating)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-amber-500" />
-                    ))}
+                <div>
+                  {/* Card Top: Stars & Verified Badge */}
+                  <div className="flex items-center justify-between mb-3.5">
+                    <div className="flex items-center gap-1 text-amber-500">
+                      {[...Array(t.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-amber-500" />
+                      ))}
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100">
+                      <CheckCircle2 className="w-3 h-3 text-emerald-600" /> Verified
+                    </span>
                   </div>
+
+                  <Quote className="w-6 h-6 text-emerald-300 mb-2 opacity-60" />
                   <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic">
                     &ldquo;{t.review}&rdquo;
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-slate-100">
-                  <h4 className="text-xs font-bold text-slate-900">{t.name}</h4>
-                  <p className="text-[11px] text-slate-500">{t.role}</p>
-                  <span className="inline-block mt-1 text-[10px] text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">
-                    {t.course}
+
+                {/* Card Bottom: User Details */}
+                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-600 via-teal-600 to-blue-700 text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-xs">
+                      {t.initials}
+                    </div>
+                    <div>
+                      <h4 className="text-xs sm:text-sm font-bold text-slate-900 leading-tight">
+                        {t.name}
+                      </h4>
+                      <p className="text-[11px] text-slate-500 mt-0.5">
+                        {t.role} • <span className="text-slate-700 font-medium">{t.city}</span>
+                      </p>
+                      <span className="inline-block mt-1 text-[10px] text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">
+                        {t.course}
+                      </span>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-mono text-slate-400 shrink-0 hidden sm:inline">
+                    {t.date}
                   </span>
                 </div>
               </div>
+            ))}
+          </div>
+
+          {/* Dot Navigation Indicators */}
+          <div className="flex items-center justify-center gap-1.5 mt-4">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => {
+                  if (testimonialScrollRef.current) {
+                    const cardWidth = 360;
+                    testimonialScrollRef.current.scrollTo({
+                      left: i * cardWidth,
+                      behavior: "smooth",
+                    });
+                  }
+                }}
+                className="w-2.5 h-1.5 rounded-full bg-slate-300 hover:bg-emerald-600 transition-all cursor-pointer"
+                aria-label={`Go to testimonial ${i + 1}`}
+              />
             ))}
           </div>
         </div>

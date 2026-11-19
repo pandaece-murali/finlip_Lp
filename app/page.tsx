@@ -187,7 +187,7 @@ export default function Home() {
                 </button>
 
                 <Link
-                  href="/finlip-security"
+                  href="/finlip-security-academy"
                   className="w-full sm:w-auto px-6 py-3.5 rounded-xl font-semibold text-sm text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 hover:border-slate-400 transition-all text-center flex items-center justify-center gap-2 shadow-2xs"
                 >
                   <BookOpen className="w-4 h-4 text-slate-500" />
@@ -482,7 +482,7 @@ export default function Home() {
                       Book Free Demo
                     </button>
                     <Link
-                      href="/finlip-security"
+                      href="/finlip-security-academy"
                       className="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 transition-colors cursor-pointer"
                     >
                       View Details
@@ -495,7 +495,7 @@ export default function Home() {
 
           <div className="mt-12 text-center">
             <Link
-              href="/finlip-security"
+              href="/finlip-security-academy"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-50 border border-slate-300 hover:border-emerald-500 text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-all shadow-2xs"
             >
               <span>Explore All Certifications & Syllabus Details on Meta Portal</span>
