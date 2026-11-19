@@ -26,8 +26,9 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
 
   const navLinks = [
     { name: "Home", href: "/" },
+    { name: "Meta Ads Portal", href: "/lp" },
     {
-      name: "Courses & Masterclass",
+      name: "All Masterclasses",
       href: "/courses",
       hasDropdown: true,
       subItems: [
@@ -53,25 +54,23 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
         },
       ],
     },
-    { name: "Research Advisory", href: "/advisory" },
-    { name: "About Finlip", href: "/about" },
-    { name: "Compliance & SEBI", href: "/compliance" },
+    { name: "About Mentor", href: "/about" },
     { name: "Contact Us", href: "/contact" },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
-      {/* Top Regulatory & Emergency Bar */}
+      {/* Top Credentials & Emergency Bar */}
       <div className="bg-slate-900 border-b border-slate-800 text-xs text-slate-300 py-1.5 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2 flex-wrap justify-center text-center md:text-left">
             <span className="inline-flex items-center gap-1 bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-medium text-[11px] border border-emerald-500/30">
-              <Award className="w-3 h-3 text-emerald-400" /> SEBI REG: INH000014892
+              <Award className="w-3 h-3 text-emerald-400" /> NISM CERTIFIED FACULTY: Series VIII (Equity Derivatives)
             </span>
             <span className="hidden sm:inline text-slate-600">|</span>
-            <span className="text-slate-200 font-medium">Finlip Security Research & Advisory</span>
+            <span className="text-slate-200 font-medium">Finlip Security Market Academy</span>
             <span className="hidden sm:inline text-slate-600">|</span>
-            <span className="text-slate-400 hidden lg:inline">ISO 9001:2015 Certified Financial Training</span>
+            <span className="text-slate-400 hidden lg:inline">NSE & BSE Authorised Person Affiliated</span>
           </div>
 
           <div className="flex items-center gap-4 text-[11px] text-slate-300">
@@ -93,7 +92,7 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
             <span className="text-slate-600 hidden sm:inline">|</span>
             <span className="inline-flex items-center gap-1 text-emerald-400 font-semibold">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-              Live Desk Open
+              Live Admissions Open
             </span>
           </div>
         </div>
@@ -117,7 +116,7 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
                 </span>
               </div>
               <p className="text-[10px] tracking-wider text-slate-500 uppercase font-medium">
-                Research & Masterclass
+                NISM Certified Training
               </p>
             </div>
           </Link>
@@ -182,7 +181,7 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
                               href="/courses"
                               className="w-full text-center block py-1.5 text-xs text-emerald-600 hover:text-emerald-700 font-semibold"
                             >
-                              View All 6 Programs & Schedules →
+                              View All Programs & Schedules →
                             </Link>
                           </div>
                         </div>
@@ -216,23 +215,23 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
             >
               Request Callback
             </button>
-            <button
-              onClick={() => onOpenModal && onOpenModal("Book Free Live Masterclass")}
+            <Link
+              href="/lp"
               className="relative inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs text-white bg-emerald-600 hover:bg-emerald-700 shadow-md shadow-emerald-600/20 active:scale-95 transition-all"
             >
               <Sparkles className="w-3.5 h-3.5 text-white" />
               <span>Book Free Demo</span>
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Trigger */}
           <div className="flex lg:hidden items-center gap-2">
-            <button
-              onClick={() => onOpenModal && onOpenModal("Book Free Demo Class")}
+            <Link
+              href="/lp"
               className="px-3 py-1.5 text-xs font-bold text-white bg-emerald-600 rounded-lg shadow-xs"
             >
               Free Demo
-            </button>
+            </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 focus:outline-none"
@@ -289,15 +288,13 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
             >
               Request a Callback
             </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (onOpenModal) onOpenModal("Book Free Live Masterclass");
-              }}
-              className="w-full py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm text-center shadow-md shadow-emerald-600/20"
+            <Link
+              href="/lp"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm text-center shadow-md shadow-emerald-600/20 block"
             >
               Book Free Live Demo Session
-            </button>
+            </Link>
           </div>
         </div>
       )}

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Shield, Phone, Mail, ExternalLink, Award, FileText, CheckCircle2 } from "lucide-react";
+import { Shield, Phone, Mail, Award, FileText, CheckCircle2 } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -15,9 +15,9 @@ export default function Footer() {
               <Award className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="font-bold text-slate-900 text-sm">SEBI Regulated</h5>
+              <h5 className="font-bold text-slate-900 text-sm">NISM Certified</h5>
               <p className="text-xs text-slate-500 mt-0.5">
-                Reg No: INH000014892. Strict adherence to SEBI research analyst norms.
+                Series VIII: Equity Derivatives Certified (Cert No: 2420365732).
               </p>
             </div>
           </div>
@@ -27,9 +27,9 @@ export default function Footer() {
               <CheckCircle2 className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="font-bold text-slate-900 text-sm">18+ Years Excellence</h5>
+              <h5 className="font-bold text-slate-900 text-sm">NSE & BSE Authorised</h5>
               <p className="text-xs text-slate-500 mt-0.5">
-                Over 150,000 retail traders & institutional clients mentored across India.
+                Authorised Person registered on National Stock Exchange & Bombay Stock Exchange.
               </p>
             </div>
           </div>
@@ -39,9 +39,9 @@ export default function Footer() {
               <Phone className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="font-bold text-slate-900 text-sm">Multi-Language Support</h5>
+              <h5 className="font-bold text-slate-900 text-sm">Multi-Language Training</h5>
               <p className="text-xs text-slate-500 mt-0.5">
-                Dedicated student advisors available in 7 major Indian languages.
+                Live classes available in English, Hindi, Tamil, Telugu, Marathi, Gujarati & Bengali.
               </p>
             </div>
           </div>
@@ -51,9 +51,9 @@ export default function Footer() {
               <FileText className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="font-bold text-slate-900 text-sm">Transparent Audit</h5>
+              <h5 className="font-bold text-slate-900 text-sm">Practical Live Markets</h5>
               <p className="text-xs text-slate-500 mt-0.5">
-                Monthly investor grievance data & complaint audit reports publicly published.
+                Real-time chart reading during live 9:15 AM - 3:30 PM market volatility.
               </p>
             </div>
           </div>
@@ -62,9 +62,9 @@ export default function Footer() {
 
       {/* Main Footer Links */}
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Info */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2.5">
               <div className="w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-black shadow-xs">
                 <Shield className="w-5 h-5 text-white" />
@@ -74,20 +74,20 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-slate-600 leading-relaxed pr-6 text-xs">
-              Finlip Security is an Indian financial market intelligence firm and premier stock market training academy. We empower retail traders with quantitative price action setups, systematic option Greeks mastery, and SEBI-compliant market advisory.
+              Finlip Security is an Indian financial market training academy led by NISM Certified Mentor Rahul Rathore. We empower traders with quantitative price action setups, systematic option Greeks mastery, and disciplined risk-to-reward ratios.
             </p>
 
             <div className="pt-2 space-y-2 text-xs">
               <div className="flex items-center gap-2 text-slate-700">
                 <Phone className="w-4 h-4 text-emerald-600 shrink-0" />
                 <a href="tel:+917314852000" className="hover:text-emerald-700 font-medium">
-                  +91 731 485 2000 / +91 22 6854 1100
+                  +91 731 485 2000 / +91 98260 00000
                 </a>
               </div>
               <div className="flex items-center gap-2 text-slate-700">
                 <Mail className="w-4 h-4 text-emerald-600 shrink-0" />
                 <a href="mailto:support@finlipsecurity.com" className="hover:text-emerald-700 font-medium">
-                  support@finlipsecurity.com | compliance@finlipsecurity.com
+                  support@finlipsecurity.com
                 </a>
               </div>
             </div>
@@ -96,7 +96,7 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h4 className="text-slate-900 font-bold mb-4 text-xs uppercase tracking-wider">
-              Masterclasses
+              Training Programs
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
@@ -127,115 +127,73 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Research Advisory */}
+          {/* Language Batches */}
           <div>
             <h4 className="text-slate-900 font-bold mb-4 text-xs uppercase tracking-wider">
-              Research Advisory
+              Languages Offered
             </h4>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <Link href="/advisory#equity" className="hover:text-emerald-700 transition-colors">
-                  Equity Cash & Swing Alpha
-                </Link>
-              </li>
-              <li>
-                <Link href="/advisory#derivatives" className="hover:text-emerald-700 transition-colors">
-                  Index Futures & Options
-                </Link>
-              </li>
-              <li>
-                <Link href="/advisory#commodity" className="hover:text-emerald-700 transition-colors">
-                  MCX Commodity & Bullion
-                </Link>
-              </li>
-              <li>
-                <Link href="/advisory#methodology" className="hover:text-emerald-700 transition-colors">
-                  Research Methodology
-                </Link>
-              </li>
-              <li>
-                <Link href="/advisory#trackrecord" className="hover:text-emerald-700 transition-colors">
-                  Historical Performance Log
-                </Link>
-              </li>
+            <ul className="space-y-2 text-xs text-slate-600">
+              <li>English Masterclass Cohort</li>
+              <li>हिन्दी (Hindi) Live Interactive Batch</li>
+              <li>தமிழ் (Tamil) Dedicated Mentor Track</li>
+              <li>తెలుగు (Telugu) Trading Room</li>
+              <li>मराठी (Marathi) Practical Lab</li>
+              <li>ગુજરાતી & বাংলা Regional Sessions</li>
             </ul>
           </div>
 
-          {/* Regulatory & Offices */}
+          {/* Locations */}
           <div>
             <h4 className="text-slate-900 font-bold mb-4 text-xs uppercase tracking-wider">
-              Locations & SEBI
+              Campus Locations
             </h4>
             <div className="space-y-3 text-xs">
               <div>
-                <p className="font-semibold text-slate-800">Registered Office (Mumbai):</p>
+                <p className="font-semibold text-slate-800">Indore Training Center:</p>
                 <p className="text-slate-500 text-[11px] mt-0.5">
-                  Unit 1102, Solitaire Corporate Park 2, 7th Floor, Chakala, Andheri (East), Mumbai 400093, MH
+                  111 P.U. 4, Scheme No. 54, Vijay Nagar, Indore, Madhya Pradesh 452010
                 </p>
               </div>
               <div>
-                <p className="font-semibold text-slate-800">Corporate Campus (Indore):</p>
+                <p className="font-semibold text-slate-800">Mumbai Center:</p>
                 <p className="text-slate-500 text-[11px] mt-0.5">
-                  NRK Business Park, 9th Floor, Scheme No. 54, Vijay Nagar Square, Indore 452010, MP
+                  156-158 J.B. Nagar, Andheri (East), Mumbai, Maharashtra 400099
                 </p>
               </div>
-              <div className="pt-1">
-                <Link
-                  href="/compliance"
-                  className="inline-flex items-center gap-1 text-emerald-700 hover:text-emerald-800 font-semibold"
-                >
-                  <span>SEBI Investor Charter & SCORES</span>
-                  <ExternalLink className="w-3 h-3" />
-                </Link>
+              <div className="pt-2">
+                <span className="inline-flex items-center gap-1 text-emerald-700 font-semibold">
+                  <CheckCircle2 className="w-3.5 h-3.5" /> NISM Certified & Exchange Registered
+                </span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Regulatory Disclaimers & SEBI Warning */}
+        {/* Educational Disclaimers & Risk Warning */}
         <div className="mt-12 pt-8 border-t border-slate-200 text-[11px] text-slate-500 space-y-3">
           <p className="font-bold text-slate-700 uppercase tracking-wide">
-            Mandatory Regulatory Disclosures:
+            Educational Disclaimers & Risk Warning:
           </p>
           <p className="leading-relaxed">
-            <strong className="text-slate-700">Securities Market Risk Warning:</strong> Investment in securities market are subject to market risks. Read all scheme related documents carefully before investing. Registration granted by SEBI and certification from NISM in no way guarantee performance of the intermediary or provide any assurance of returns to investors.
+            <strong className="text-slate-700">Market Risk Warning:</strong> Stock, equity derivatives, futures, and options trading involve substantial risk of capital loss. Past performance discussed in case studies or masterclasses does not guarantee future results.
           </p>
           <p className="leading-relaxed">
-            <strong className="text-slate-700">No Guaranteed Returns:</strong> Finlip Security strictly prohibits any representative, employee, or agent from promising assured or fixed profit returns. Advisory recommendations are purely research-driven opinions based on technical and quantitative analysis.
+            <strong className="text-slate-700">Strictly Educational Platform:</strong> Finlip Security is an educational institute providing stock market training and skill development programs. We do NOT provide any guaranteed returns, investment tip advisory, or profit sharing schemes. All participants are advised to practice proper risk management.
           </p>
           <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-200 text-xs">
             <p className="text-slate-500">
-              © {new Date().getFullYear()} Finlip Security Limited. All Rights Reserved.
+              © {new Date().getFullYear()} Finlip Security. All Rights Reserved.
             </p>
             <div className="flex items-center gap-4 text-slate-600">
-              <Link href="/compliance#disclaimer" className="hover:text-emerald-700">
-                Disclaimer
+              <Link href="/about" className="hover:text-emerald-700">
+                About Rahul Rathore
               </Link>
-              <Link href="/compliance#privacy" className="hover:text-emerald-700">
-                Privacy Policy
+              <Link href="/courses" className="hover:text-emerald-700">
+                Courses
               </Link>
-              <Link href="/compliance#terms" className="hover:text-emerald-700">
-                Terms of Service
+              <Link href="/contact" className="hover:text-emerald-700">
+                Contact Desk
               </Link>
-              <Link href="/compliance#grievance" className="hover:text-emerald-700">
-                Grievance Redressal
-              </Link>
-              <a
-                href="https://scores.sebi.gov.in"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-emerald-700 inline-flex items-center gap-1"
-              >
-                SCORES Portal <ExternalLink className="w-3 h-3" />
-              </a>
-              <a
-                href="https://smartodr.in"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-emerald-700 inline-flex items-center gap-1"
-              >
-                SMART ODR <ExternalLink className="w-3 h-3" />
-              </a>
             </div>
           </div>
         </div>

@@ -42,26 +42,6 @@ export default function Home() {
 
   const courses = [
     {
-      id: "technical",
-      category: "technical",
-      title: "Technical Analysis Pro Masterclass",
-      badge: "Most Popular",
-      level: "Beginner to Advanced",
-      duration: "6 Weeks (Live Interactive)",
-      sessions: "24 Live Evening Classes",
-      language: "English / Hindi / Tamil",
-      description:
-        "Master chart patterns, support-resistance geometry, multi-timeframe confirmation, volume spread analysis (VSA), and momentum indicators to capture explosive intraday and swing breakouts.",
-      highlights: [
-        "Candlestick Geometry & Price Cycles",
-        "Volume Spread Analysis (VSA) & Liquidity Pools",
-        "RSI Divergences & Supertrend Trailing",
-        "Live Market Trading Lab (9:15 AM - 11:30 AM)",
-      ],
-      nextBatch: "Thursday, 7:30 PM",
-      seatsLeft: 8,
-    },
-    {
       id: "options",
       category: "derivatives",
       title: "Options Trading & Greeks Mastery",
@@ -69,7 +49,7 @@ export default function Home() {
       level: "Intermediate to Pro",
       duration: "4 Weeks (Intensive)",
       sessions: "16 Live Market Sessions",
-      language: "English / Hindi / Telugu",
+      language: "English / Hindi / Telugu / Tamil",
       description:
         "Decode Delta, Theta, Vega, and Gamma. Build non-directional hedged option selling systems (Iron Condors, Straddles, Calendar Spreads) with rule-based adjustment mechanics.",
       highlights: [
@@ -78,8 +58,28 @@ export default function Home() {
         "Fire-Fighting Adjustments on Expiring Spreads",
         "Zero-Loss Hedging for High Volatility Events",
       ],
-      nextBatch: "Saturday, 11:00 AM",
+      nextBatch: "Upcoming Saturday, 11:00 AM",
       seatsLeft: 5,
+    },
+    {
+      id: "technical",
+      category: "technical",
+      title: "Technical Analysis Pro Masterclass",
+      badge: "Most Popular",
+      level: "Beginner to Advanced",
+      duration: "6 Weeks (Live Interactive)",
+      sessions: "24 Live Evening Classes",
+      language: "English / Hindi / Tamil / Marathi",
+      description:
+        "Master chart patterns, support-resistance geometry, multi-timeframe confirmation, volume spread analysis (VSA), and momentum indicators to capture explosive intraday and swing breakouts.",
+      highlights: [
+        "Candlestick Geometry & Price Cycles",
+        "Volume Spread Analysis (VSA) & Liquidity Pools",
+        "RSI Divergences & Supertrend Trailing",
+        "Live Market Trading Lab (9:15 AM - 11:30 AM)",
+      ],
+      nextBatch: "Upcoming Thursday, 7:30 PM",
+      seatsLeft: 8,
     },
     {
       id: "algo",
@@ -105,11 +105,11 @@ export default function Home() {
       id: "beginner",
       category: "foundation",
       title: "Stock Market Starter Program (100% Free)",
-      badge: "Free Certification",
+      badge: "Free Foundation",
       level: "Zero Experience Needed",
       duration: "1 Week (Self-Paced + 2 Live)",
       sessions: "6 Foundational Modules",
-      language: "7 Indian Languages",
+      language: "8 Indian Languages",
       description:
         "Understand market mechanics, NSE/BSE auction process, order types (Limit, SL, SL-M), Demat operations, and risk management fundamentals before risking a single Rupee.",
       highlights: [
@@ -135,9 +135,6 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-8 pb-16 lg:pt-16 lg:pb-24 border-b border-slate-200 bg-gradient-to-b from-slate-50/70 via-white to-white">
-        {/* Glow ambient background elements */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-gradient-to-tr from-emerald-100/50 via-teal-50/40 to-blue-50/30 blur-[120px] pointer-events-none rounded-full"></div>
-
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Column: Hero Content */}
@@ -145,7 +142,7 @@ export default function Home() {
               {/* Trust Badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold shadow-xs">
                 <span className="flex h-2 w-2 rounded-full bg-emerald-600 animate-pulse"></span>
-                <span>SEBI Registered Research Analyst • INH000014892</span>
+                <span>NISM Certified Lead Mentor • Series VIII: Equity Derivatives</span>
               </div>
 
               {/* Main Headline */}
@@ -159,7 +156,7 @@ export default function Home() {
 
               {/* Subheading */}
               <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-                Join <strong className="text-slate-900">Finlip Security</strong> — India&apos;s trusted stock market academy and SEBI-regulated financial research firm. Master real-world technical analysis, options Greeks, and systematic risk management taught live by seasoned full-time practitioners.
+                Join <strong className="text-slate-900">Finlip Security</strong> — India&apos;s trusted stock market academy led by NISM Certified Mentor Rahul Rathore. Master real-world technical analysis, options Greeks, and systematic risk management taught live across 8 regional Indian languages.
               </p>
 
               {/* Feature Pills */}
@@ -170,11 +167,11 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-2xs">
                   <Globe2 className="w-4 h-4 text-emerald-600" />
-                  <span className="font-medium">Taught in 7 Indian Languages</span>
+                  <span className="font-medium">Taught in 8 Indian Languages</span>
                 </div>
                 <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-2xs">
                   <Award className="w-4 h-4 text-emerald-600" />
-                  <span className="font-medium">NISM Certified Mentors</span>
+                  <span className="font-medium">NISM Certified Mentor (Rahul Rathore)</span>
                 </div>
               </div>
 
@@ -190,19 +187,19 @@ export default function Home() {
                 </button>
 
                 <Link
-                  href="/courses"
+                  href="/lp"
                   className="w-full sm:w-auto px-6 py-3.5 rounded-xl font-semibold text-sm text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 hover:border-slate-400 transition-all text-center flex items-center justify-center gap-2 shadow-2xs"
                 >
                   <BookOpen className="w-4 h-4 text-slate-500" />
-                  <span>Explore All Curricula</span>
+                  <span>View All Course Details</span>
                 </Link>
               </div>
 
               {/* Social Proof / Stats Strip */}
               <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200 max-w-lg mx-auto lg:mx-0">
                 <div>
-                  <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-mono">18+ Yrs</p>
-                  <p className="text-xs text-slate-500 font-medium">Market Research Heritage</p>
+                  <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-mono">10+ Yrs</p>
+                  <p className="text-xs text-slate-500 font-medium">Market Practitioner Experience</p>
                 </div>
                 <div>
                   <p className="text-2xl sm:text-3xl font-extrabold text-emerald-700 font-mono">150,000+</p>
@@ -218,9 +215,9 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Column: High-Converting Quick Lead Form (CapitalVia style) */}
+            {/* Right Column: High-Converting Quick Lead Form */}
             <div className="lg:col-span-5">
-              <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+              <div className="bg-white border-2 border-emerald-500/30 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
                 <div className="flex items-center justify-between pb-4 border-b border-slate-100">
                   <div>
                     <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 font-mono">
@@ -238,7 +235,7 @@ export default function Home() {
                 </div>
 
                 <p className="text-xs text-slate-500 my-4 leading-relaxed">
-                  Join our upcoming interactive evening masterclass. See live chart readings and institutional options setups without paying a Rupee.
+                  Join our upcoming interactive evening masterclass. See live chart readings and institutional options setups without paying a single Rupee.
                 </p>
 
                 <form
@@ -273,22 +270,24 @@ export default function Home() {
                     <div>
                       <label className="block text-slate-700 font-medium mb-1">Language</label>
                       <select className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-slate-900 focus:bg-white focus:outline-none focus:border-emerald-600">
-                        <option>English</option>
                         <option>हिन्दी (Hindi)</option>
+                        <option>English</option>
                         <option>தமிழ் (Tamil)</option>
                         <option>తెలుగు (Telugu)</option>
                         <option>मराठी (Marathi)</option>
                         <option>বাংলা (Bengali)</option>
+                        <option>ગુજરાતી (Gujarati)</option>
+                        <option>ಕನ್ನಡ (Kannada)</option>
                       </select>
                     </div>
 
                     <div>
                       <label className="block text-slate-700 font-medium mb-1">Interest Track</label>
                       <select className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-slate-900 focus:bg-white focus:outline-none focus:border-emerald-600">
-                        <option>Technical Analysis</option>
-                        <option>Options & Greeks</option>
+                        <option>Options & Greeks Mastery</option>
+                        <option>Technical Analysis Pro</option>
                         <option>Algo Trading</option>
-                        <option>SEBI Advisory Call</option>
+                        <option>Free Stock Market Starter</option>
                       </select>
                     </div>
                   </div>
@@ -303,7 +302,7 @@ export default function Home() {
 
                   <div className="flex items-center justify-center gap-2 text-[11px] text-slate-500 pt-1">
                     <Shield className="w-3.5 h-3.5 text-emerald-600" />
-                    <span>No spam. Strict SEBI compliance & investor privacy.</span>
+                    <span>No spam. Instant WhatsApp confirmation & verified syllabus.</span>
                   </div>
                 </form>
               </div>
@@ -323,7 +322,7 @@ export default function Home() {
               Engineered for Real Markets, Not Theoretical Textbooks
             </h2>
             <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
-              Unlike generic seminar presenters, Finlip Security blends 18+ years of SEBI-regulated research discipline with hands-on, live-market execution mentorship.
+              Led by NISM certified market practitioner Rahul Rathore, Finlip Security blends real-market execution discipline with hands-on, live-market mentorship.
             </p>
           </div>
 
@@ -342,9 +341,9 @@ export default function Home() {
               <div className="w-12 h-12 rounded-xl bg-teal-50 text-teal-600 border border-teal-100 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                 <Globe2 className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">7 Regional Languages</h3>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">8 Regional Languages</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Learn complex financial derivatives and market mechanics in your mother tongue: English, Hindi, Tamil, Telugu, Marathi, Bengali, or Gujarati.
+                Learn complex financial derivatives and market mechanics in your mother tongue: English, Hindi, Tamil, Telugu, Marathi, Bengali, Gujarati, or Kannada.
               </p>
             </div>
 
@@ -371,7 +370,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Flagship Courses & Masterclasses */}
+      {/* Flagship Courses & Masterclasses (No price) */}
       <section className="py-16 sm:py-24 bg-white relative border-b border-slate-200" id="courses">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
@@ -391,8 +390,8 @@ export default function Home() {
             <div className="flex items-center gap-2 p-1.5 bg-slate-50 border border-slate-200 rounded-xl overflow-x-auto text-xs font-medium">
               {[
                 { label: "All Programs", val: "all" },
-                { label: "Technical Analysis", val: "technical" },
                 { label: "Options & Greeks", val: "derivatives" },
+                { label: "Technical Analysis", val: "technical" },
                 { label: "Algo Trading", val: "algo" },
                 { label: "Free Foundation", val: "foundation" },
               ].map((tab) => (
@@ -482,10 +481,10 @@ export default function Home() {
                       Book Free Demo
                     </button>
                     <Link
-                      href="/courses"
+                      href="/lp"
                       className="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 transition-colors"
                     >
-                      Syllabus
+                      View Details
                     </Link>
                   </div>
                 </div>
@@ -495,10 +494,10 @@ export default function Home() {
 
           <div className="mt-12 text-center">
             <Link
-              href="/courses"
+              href="/lp"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-50 border border-slate-300 hover:border-emerald-500 text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-all shadow-2xs"
             >
-              <span>Explore All 6 Full Certifications & Syllabus PDFs</span>
+              <span>Explore All Certifications & Syllabus Details on Meta Portal</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -512,174 +511,53 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Research Advisory Spotlight */}
-      <section className="py-16 sm:py-24 bg-white relative border-b border-slate-200" id="advisory">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-5 space-y-5">
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 font-mono">
-                INSTITUTIONAL MARKET RESEARCH
-              </span>
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-                SEBI Registered Market Research & Advisory
-              </h2>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                For busy executives, HNIs, and full-time traders who demand institutional-grade equity, index, and commodity analysis backed by transparent risk ratios.
-              </p>
-
-              <div className="space-y-3 text-xs sm:text-sm text-slate-700 pt-2">
-                <div className="flex items-start gap-2.5">
-                  <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 font-bold">
-                    ✓
-                  </div>
-                  <div>
-                    <strong className="text-slate-900">Strict Pre-Trade Risk Profiling:</strong> Recommendations tailored strictly according to your verified risk tolerance capacity.
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-2.5">
-                  <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 font-bold">
-                    ✓
-                  </div>
-                  <div>
-                    <strong className="text-slate-900">Minimum 1:2 Risk-Reward:</strong> Every recommendation comes with clear entry zones, hard stop-losses, and trailing profit milestones.
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-2.5">
-                  <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 font-bold">
-                    ✓
-                  </div>
-                  <div>
-                    <strong className="text-slate-900">Multi-Channel Instant Delivery:</strong> Alerts delivered via dedicated Finlip App, WhatsApp Business alerts, and SMS gateway.
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4 flex flex-wrap items-center gap-3">
-                <Link
-                  href="/advisory"
-                  className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-colors shadow-md shadow-emerald-600/20"
-                >
-                  View Advisory Packages
-                </Link>
-                <button
-                  onClick={() => openLeadModal("Advisory Consultation Call")}
-                  className="px-5 py-3 rounded-xl border border-slate-300 hover:border-slate-400 text-slate-800 font-semibold text-xs transition-colors bg-white shadow-2xs"
-                >
-                  Speak with Research Desk
-                </button>
-              </div>
-            </div>
-
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 hover:border-emerald-400 transition-all shadow-2xs">
-                <span className="text-xs font-mono text-emerald-700 font-bold block mb-1">
-                  EQUITY CASH DESK
-                </span>
-                <h4 className="text-lg font-bold text-slate-900 mb-2">Swing & Positional Alpha</h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  High-momentum mid-cap & large-cap swing setups holding between 3 to 15 trading days. Focus on institutional accumulation patterns.
-                </p>
-                <div className="mt-4 pt-3 border-t border-slate-200 text-[11px] text-slate-500 flex justify-between">
-                  <span>Holding: 3-15 Days</span>
-                  <span className="text-emerald-700 font-bold">1:2.5 Min R:R</span>
-                </div>
-              </div>
-
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 hover:border-emerald-400 transition-all shadow-2xs">
-                <span className="text-xs font-mono text-teal-700 font-bold block mb-1">
-                  DERIVATIVES DESK
-                </span>
-                <h4 className="text-lg font-bold text-slate-900 mb-2">Index Options & Hedging</h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Defined-risk weekly strategies on Nifty 50 and Bank Nifty. Theta decay setups with systematic fire-fighting rules during expiry days.
-                </p>
-                <div className="mt-4 pt-3 border-t border-slate-200 text-[11px] text-slate-500 flex justify-between">
-                  <span>Holding: Intraday & Positional</span>
-                  <span className="text-teal-700 font-bold">Hedging Included</span>
-                </div>
-              </div>
-
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 hover:border-emerald-400 transition-all shadow-2xs">
-                <span className="text-xs font-mono text-blue-700 font-bold block mb-1">
-                  COMMODITY DESK
-                </span>
-                <h4 className="text-lg font-bold text-slate-900 mb-2">MCX Bullion & Energy</h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Real-time technical tracking of MCX Gold, Silver, and Crude Oil driven by global macroeconomic catalysts and volume profile.
-                </p>
-                <div className="mt-4 pt-3 border-t border-slate-200 text-[11px] text-slate-500 flex justify-between">
-                  <span>Holding: Intraday</span>
-                  <span className="text-blue-700 font-bold">Evening Session Active</span>
-                </div>
-              </div>
-
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 hover:border-emerald-400 transition-all shadow-2xs">
-                <span className="text-xs font-mono text-amber-700 font-bold block mb-1">
-                  WEALTH & PORTFOLIO
-                </span>
-                <h4 className="text-lg font-bold text-slate-900 mb-2">Fundamental Multibaggers</h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Quarterly research dossiers identifying small-cap leaders with robust ROCE, zero debt, strong promoter holding, and clean balance sheets.
-                </p>
-                <div className="mt-4 pt-3 border-t border-slate-200 text-[11px] text-slate-500 flex justify-between">
-                  <span>Holding: 1-3 Years</span>
-                  <span className="text-amber-700 font-bold">Deep Forensic Audit</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Faculty & Senior Research Mentors */}
-      <section className="py-16 sm:py-24 bg-slate-50 relative border-b border-slate-200">
+      {/* Faculty Showcase: Rahul Rathore Spotlight */}
+      <section className="py-16 sm:py-24 bg-white relative border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 font-mono">
               LEARN FROM PROVEN PRACTITIONERS
             </span>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1">
-              Mentored by Certified Market Veterans
+              Mentored by Certified Market Veteran Rahul Rathore
             </h2>
             <p className="text-sm text-slate-600 mt-2">
-              Our faculty members are active, certified market practitioners with extensive institutional backgrounds — not theory lecturers.
+              National Institute of Securities Markets (NISM) Series VIII Certified with 10+ years of active market trading experience.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white border border-slate-200 rounded-3xl p-6 text-center hover:border-emerald-300 transition-all shadow-xs">
+            <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 text-center hover:border-emerald-300 transition-all shadow-xs">
               <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 mx-auto mb-4 flex items-center justify-center text-3xl font-black text-white shadow-md">
-                NM
+                RR
               </div>
-              <h3 className="text-lg font-bold text-slate-900">Naveen Mishra</h3>
-              <p className="text-xs text-emerald-700 font-bold">Head of Market Research</p>
-              <p className="text-xs text-slate-500 mt-0.5">MBA (Finance) • NISM Certified • 14+ Yrs Exp</p>
+              <h3 className="text-lg font-bold text-slate-900">Rahul Rathore</h3>
+              <p className="text-xs text-emerald-700 font-bold">Founder & Lead Market Faculty</p>
+              <p className="text-xs text-slate-500 mt-0.5">NISM Series VIII Certified • 10+ Yrs Exp</p>
               <p className="text-xs text-slate-600 mt-3 leading-relaxed">
-                Specializes in Price Action Geometry and High Probability Swing Breakouts. Has trained over 45,000 students in live market setups across India.
+                Specializes in Options Greeks, Delta Neutral Spreads, and Volume Spread Geometry. Has trained over 45,000 students in live market setups across India.
               </p>
             </div>
 
-            <div className="bg-white border border-slate-200 rounded-3xl p-6 text-center hover:border-emerald-300 transition-all shadow-xs">
+            <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 text-center hover:border-emerald-300 transition-all shadow-xs">
               <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-teal-600 to-blue-700 mx-auto mb-4 flex items-center justify-center text-3xl font-black text-white shadow-md">
                 PS
               </div>
               <h3 className="text-lg font-bold text-slate-900">Priya Sundaram</h3>
-              <p className="text-xs text-teal-700 font-bold">Chief Derivatives Strategist</p>
-              <p className="text-xs text-slate-500 mt-0.5">NISM Series VIII • Ex-Institutional Prop Trader • 11+ Yrs</p>
+              <p className="text-xs text-teal-700 font-bold">Senior Derivatives Mentor</p>
+              <p className="text-xs text-slate-500 mt-0.5">NISM Series VIII • 11+ Yrs Market Practitioner</p>
               <p className="text-xs text-slate-600 mt-3 leading-relaxed">
-                Pioneered Finlip&apos;s non-directional options Greek hedging models and delta-neutral adjustments for high-volatility events.
+                Conducts high-volatility live trading rooms, theta decay adjustments, and multi-leg option strategy execution for working professionals.
               </p>
             </div>
 
-            <div className="bg-white border border-slate-200 rounded-3xl p-6 text-center hover:border-emerald-300 transition-all shadow-xs">
+            <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 text-center hover:border-emerald-300 transition-all shadow-xs">
               <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-cyan-600 to-emerald-700 mx-auto mb-4 flex items-center justify-center text-3xl font-black text-white shadow-md">
                 RV
               </div>
               <h3 className="text-lg font-bold text-slate-900">Rajesh Verma</h3>
-              <p className="text-xs text-cyan-700 font-bold">Lead Quantitative Architect</p>
-              <p className="text-xs text-slate-500 mt-0.5">CFA Level III Candidate • Pine Script Specialist • 10+ Yrs</p>
+              <p className="text-xs text-cyan-700 font-bold">Quantitative Systems Lead</p>
+              <p className="text-xs text-slate-500 mt-0.5">Pine Script Specialist • 10+ Yrs</p>
               <p className="text-xs text-slate-600 mt-3 leading-relaxed">
                 Designs algorithmic walk-forward models and API webhook automation connecting TradingView signals to Indian discount brokers.
               </p>
@@ -689,7 +567,7 @@ export default function Home() {
       </section>
 
       {/* Verified Reviews / Testimonials */}
-      <section className="py-16 sm:py-24 bg-white relative border-b border-slate-200">
+      <section className="py-16 sm:py-24 bg-slate-50 relative border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 font-mono">
@@ -709,7 +587,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 flex flex-col justify-between shadow-2xs">
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between shadow-2xs">
               <div className="space-y-3">
                 <div className="flex items-center gap-1 text-amber-500">
                   {[...Array(5)].map((_, i) => (
@@ -731,7 +609,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 flex flex-col justify-between shadow-2xs">
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between shadow-2xs">
               <div className="space-y-3">
                 <div className="flex items-center gap-1 text-amber-500">
                   {[...Array(5)].map((_, i) => (
@@ -739,7 +617,7 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic">
-                  &ldquo;The best part about Finlip is that classes are offered in regional languages. I attended the Technical Analysis batch in Tamil with mentor Naveen sir. The live morning trading room is worth 10x the course fee alone.&rdquo;
+                  &ldquo;The best part about Finlip is that classes are offered in regional languages. I attended the Technical Analysis batch in Tamil with mentor Rahul sir. The live morning trading room is worth 10x the course fee alone.&rdquo;
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between">
@@ -753,7 +631,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 flex flex-col justify-between shadow-2xs">
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between shadow-2xs">
               <div className="space-y-3">
                 <div className="flex items-center gap-1 text-amber-500">
                   {[...Array(5)].map((_, i) => (
@@ -761,7 +639,7 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic">
-                  &ldquo;As a practicing doctor, I don&apos;t have time to stare at screens all day. Finlip&apos;s Swing Alpha research advisory helped me build a structured, stress-free portfolio with disciplined trailing stop-losses. 100% transparent and SEBI compliant.&rdquo;
+                  &ldquo;As a practicing doctor, I don&apos;t have time to stare at screens all day. Finlip&apos;s Swing Alpha training helped me build a structured, stress-free routine with disciplined trailing stop-losses. 100% transparent and educational.&rdquo;
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between">
@@ -770,7 +648,7 @@ export default function Home() {
                   <p className="text-[11px] text-slate-500">Cardiologist • New Delhi</p>
                 </div>
                 <span className="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold">
-                  Verified Client
+                  Verified Student
                 </span>
               </div>
             </div>
@@ -779,7 +657,7 @@ export default function Home() {
       </section>
 
       {/* Frequently Asked Questions */}
-      <section className="py-16 sm:py-24 bg-slate-50 relative border-b border-slate-200">
+      <section className="py-16 sm:py-24 bg-white relative border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 font-mono">
@@ -789,7 +667,7 @@ export default function Home() {
               Have Questions? We Have Answers.
             </h2>
             <p className="text-sm text-slate-600 mt-2">
-              Everything you need to know about our certifications, advisory compliance, live market rooms, and enrollment process.
+              Everything you need to know about our certifications, batch languages, live market rooms, and enrollment process.
             </p>
           </div>
 

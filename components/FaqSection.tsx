@@ -11,40 +11,40 @@ interface FaqItem {
 
 const faqs: FaqItem[] = [
   {
-    category: "SEBI & Legitimacy",
-    question: "Is Finlip Security registered with SEBI?",
+    category: "Certification & Credibility",
+    question: "What certifications does the lead faculty hold?",
     answer:
-      "Yes, Finlip Security is a SEBI Registered entity (Registration No: INH000014892) and strictly complies with the SEBI (Research Analysts) and SEBI (Investment Advisers) Regulations. We do not provide guaranteed or assured returns, and we enforce transparent risk profiling on all recommendations.",
+      "Our lead mentor, Mr. Rahul Rathore, is NISM Certified (Series VIII: Equity Derivatives Continuing Professional Education Program, Cert No: 2420365732) and is an Authorised Person registered with both the National Stock Exchange (NSE) and the Bombay Stock Exchange (BSE). We strictly emphasize capital preservation and institutional risk-to-reward ratios.",
   },
   {
-    category: "Education & Masterclass",
-    question: "In which languages are the Masterclasses conducted?",
+    category: "Languages Offered",
+    question: "In which languages can I attend the courses?",
     answer:
-      "Our live interactive evening classes and student doubt-clearing sessions are conducted in English, Hindi (हिन्दी), Tamil (தமிழ்), Telugu (తెలుగు), Marathi (मराठी), and Bengali (বাংলা). You can choose your preferred language cohort during enrollment.",
+      "We offer live interactive batches in 8 languages: English, हिन्दी (Hindi), தமிழ் (Tamil), తెలుగు (Telugu), मराठी (Marathi), ગુજરાતી (Gujarati), বাংলা (Bengali), and ಕನ್ನಡ (Kannada). During registration, simply select your preferred language cohort.",
   },
   {
-    category: "Prerequisites",
+    category: "Beginner Eligibility",
     question: "I am a complete beginner with zero finance background. Can I join?",
     answer:
-      "Absolutely. Our curriculum starts with the 'Basics of Stock Market' foundation track covering Demat accounts, order types (limit, market, stop-loss), margin trading rules, and basic chart mechanics before transitioning into advanced technical and option strategies.",
+      "Yes, absolutely. We have a dedicated 'Stock Market Starter' foundation track covering Demat accounts, order types (Limit, Market, Stop-Loss), leverage mechanics, and basic chart reading before moving into advanced technical and option strategies.",
   },
   {
-    category: "Live Sessions",
-    question: "What if I miss a live evening class?",
+    category: "Missed Classes",
+    question: "What happens if I miss a live session?",
     answer:
-      "All live interactive sessions are recorded in Full HD and uploaded to the Finlip Student Portal within 2 hours with lifetime access, downloadable session PDFs, indicator pine-scripts, and weekend doubt clearing access.",
+      "All live interactive classes are recorded in Full HD and uploaded to the Finlip Student Portal within 2 hours with lifetime access, downloadable session PDFs, indicator pine-scripts, and weekend doubt clearing access.",
   },
   {
-    category: "Advisory & Research",
-    question: "How do we receive real-time research alerts during market hours?",
+    category: "Guarantees & Advisory",
+    question: "Does Finlip offer guaranteed profits or tips?",
     answer:
-      "Verified subscribers receive real-time research calls via our dedicated Finlip mobile application, automated WhatsApp Business alerts, and SMS gateway with clear Entry, Target, and Stop-Loss levels, along with continuous trailing stop updates.",
+      "No. Stock and derivatives trading involves market risk. Finlip Security is an educational institute focused on building independent, disciplined traders through mathematical edge, option Greeks, and strict risk-to-reward frameworks (minimum 1:2). We never promise guaranteed returns.",
   },
   {
-    category: "Refunds & Guarantees",
-    question: "Does Finlip guarantee daily or monthly profits?",
+    category: "Course Inclusions",
+    question: "What is included with course enrollment?",
     answer:
-      "No. In strict compliance with SEBI regulatory guidelines, Finlip Security never promises guaranteed or risk-free returns. Securities markets carry inherent price risks. We teach and execute disciplined risk-to-reward frameworks (minimum 1:2) so your risk is strictly controlled.",
+      "You receive live interactive masterclasses, live market hours execution labs (9:15 AM - 11:30 AM), lifetime access to recordings, private student community access, daily pre-market research briefs, and a verified Certificate of Completion.",
   },
 ];
 
@@ -96,7 +96,7 @@ export default function FaqSection({ onOpenModal }: { onOpenModal?: () => void }
 
       <div className="mt-8 text-center p-6 rounded-2xl bg-slate-50 border border-slate-200">
         <p className="text-sm text-slate-700 font-medium">
-          Have more questions about our syllabus or advisory plans?
+          Have more questions about curriculum or language cohorts?
         </p>
         <button
           onClick={() => onOpenModal && onOpenModal()}

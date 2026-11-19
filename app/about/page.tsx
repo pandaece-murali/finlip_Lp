@@ -52,7 +52,7 @@ export default function AboutPage() {
             </div>
             <div className="p-4 bg-white rounded-2xl border border-slate-200 shadow-2xs">
               <p className="text-3xl sm:text-4xl font-black font-mono text-blue-700">100%</p>
-              <p className="text-xs text-slate-500 mt-1 font-medium">SEBI Compliance Adherence</p>
+              <p className="text-xs text-slate-500 mt-1 font-medium">NISM Certified Standards</p>
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@ export default function AboutPage() {
               <div className="space-y-3 pt-2 text-xs sm:text-sm text-slate-700">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Strict zero-guaranteed return policy in 100% alignment with SEBI.</span>
+                  <span>Strict zero-guaranteed return policy and transparent risk management.</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -118,6 +118,44 @@ export default function AboutPage() {
                   <p className="text-slate-600 text-xs">
                     Financial wisdom shouldn&apos;t be restricted to English speakers. We proudly deliver masterclasses in 7 Indian regional languages.
                   </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Lead Mentor Credentials */}
+      <section className="py-14 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-5 space-y-3">
+                <span className="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                  LEAD FACULTY & FOUNDER
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+                  Mr. Rahul Rathore
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  National Institute of Securities Markets (NISM) Certified in Equity Derivatives. Registered Authorised Person on both the National Stock Exchange (NSE) and Bombay Stock Exchange (BSE).
+                </p>
+                <div className="pt-2 text-xs text-slate-500 space-y-1">
+                  <p>• NISM Certificate No: <strong>2420365732</strong> (Series VIII: Equity Derivatives)</p>
+                  <p>• BSE AP Reg No: <strong>AP01329901167642</strong> (Cash & Equity Derivatives)</p>
+                  <p>• NSE AP Code: <strong>CM & FO Active</strong> (Ref: 13773/RAHUL)</p>
+                </div>
+              </div>
+              <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs">
+                  <span className="text-slate-400 block text-[11px]">Training Campus</span>
+                  <h4 className="font-bold text-slate-900 text-sm mt-0.5">Indore Head Campus</h4>
+                  <p className="text-slate-600 mt-1">111 P.U. 4, Scheme No. 54, Vijay Nagar, Indore 452010</p>
+                </div>
+                <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs">
+                  <span className="text-slate-400 block text-[11px]">Corporate Office</span>
+                  <h4 className="font-bold text-slate-900 text-sm mt-0.5">Mumbai Office</h4>
+                  <p className="text-slate-600 mt-1">156-158 J.B. Nagar, Andheri (East), Mumbai 400099</p>
                 </div>
               </div>
             </div>

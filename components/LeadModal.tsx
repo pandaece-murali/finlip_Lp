@@ -1,20 +1,21 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, CheckCircle2, ShieldCheck, User, Phone, Mail, Lock } from "lucide-react";
+import { X, CheckCircle2, Award, User, Phone, Mail, Lock } from "lucide-react";
 
 interface LeadModalProps {
   isOpen: boolean;
   onClose: () => void;
   defaultTitle?: string;
+  defaultCourse?: string;
 }
 
-export default function LeadModal({ isOpen, onClose, defaultTitle }: LeadModalProps) {
+export default function LeadModal({ isOpen, onClose, defaultTitle, defaultCourse }: LeadModalProps) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
-    interest: "Technical Analysis Pro Masterclass",
+    interest: defaultCourse || "Technical Analysis Pro Masterclass",
     language: "English",
     experience: "Beginner (0-1 yrs)",
   });
@@ -39,7 +40,7 @@ export default function LeadModal({ isOpen, onClose, defaultTitle }: LeadModalPr
       name: "",
       phone: "",
       email: "",
-      interest: "Technical Analysis Pro Masterclass",
+      interest: defaultCourse || "Technical Analysis Pro Masterclass",
       language: "English",
       experience: "Beginner (0-1 yrs)",
     });
@@ -49,7 +50,6 @@ export default function LeadModal({ isOpen, onClose, defaultTitle }: LeadModalPr
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-200">
       <div className="relative w-full max-w-lg bg-white border border-slate-200 rounded-3xl shadow-2xl p-6 sm:p-8 overflow-hidden text-slate-900">
-        {/* Background subtle color wash */}
         <div className="absolute -top-24 -right-24 w-60 h-60 bg-emerald-100/60 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute -bottom-24 -left-24 w-60 h-60 bg-blue-100/60 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -69,7 +69,7 @@ export default function LeadModal({ isOpen, onClose, defaultTitle }: LeadModalPr
             </div>
             <h3 className="text-2xl font-bold text-slate-900">Registration Confirmed!</h3>
             <p className="text-sm text-slate-600 max-w-sm mx-auto">
-              Thank you, <span className="text-emerald-700 font-semibold">{formData.name || "Trader"}</span>! A Finlip Senior Research Mentor will reach out via WhatsApp/Call in your preferred language (<span className="text-slate-900 font-medium">{formData.language}</span>) within 15 minutes.
+              Thank you, <span className="text-emerald-700 font-semibold">{formData.name || "Trader"}</span>! A Finlip Senior Mentor will reach out via WhatsApp/Call in your preferred language (<span className="text-slate-900 font-medium">{formData.language}</span>) within 15 minutes.
             </p>
 
             <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-left text-xs space-y-2 text-slate-700">
@@ -82,8 +82,12 @@ export default function LeadModal({ isOpen, onClose, defaultTitle }: LeadModalPr
                 <span className="font-mono text-slate-900">{formData.phone}</span>
               </div>
               <div className="flex items-center justify-between">
+                <span className="text-slate-500">Language Cohort:</span>
+                <span className="font-semibold text-slate-900">{formData.language}</span>
+              </div>
+              <div className="flex items-center justify-between">
                 <span className="text-slate-500">Session Pass:</span>
-                <span className="font-mono text-emerald-700 font-bold">FLIP-VIP-PASS-{Math.floor(1000 + Math.random() * 9000)}</span>
+                <span className="font-mono text-emerald-700 font-bold">FLIP-PASS-{Math.floor(1000 + Math.random() * 9000)}</span>
               </div>
             </div>
 
@@ -98,7 +102,7 @@ export default function LeadModal({ isOpen, onClose, defaultTitle }: LeadModalPr
           <div>
             <div className="mb-5">
               <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold mb-2">
-                <ShieldCheck className="w-3.5 h-3.5" /> SEBI Registered Advisory
+                <Award className="w-3.5 h-3.5" /> NISM Series VIII Certified Mentorship
               </div>
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
                 {defaultTitle || "Book Free Demo Masterclass"}
@@ -159,19 +163,20 @@ export default function LeadModal({ isOpen, onClose, defaultTitle }: LeadModalPr
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-700 font-medium mb-1">Preferred Language</label>
+                  <label className="block text-slate-700 font-medium mb-1">Course Language</label>
                   <select
                     value={formData.language}
                     onChange={(e) => setFormData({ ...formData, language: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl py-2.5 px-3 text-slate-900 focus:bg-white focus:outline-none focus:border-emerald-600 transition-colors"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl py-2.5 px-3 text-slate-900 focus:bg-white focus:outline-none focus:border-emerald-600 transition-colors font-medium"
                   >
                     <option value="English">English</option>
                     <option value="Hindi">हिन्दी (Hindi)</option>
                     <option value="Tamil">தமிழ் (Tamil)</option>
                     <option value="Telugu">తెలుగు (Telugu)</option>
                     <option value="Marathi">मराठी (Marathi)</option>
-                    <option value="Bengali">বাংলা (Bengali)</option>
                     <option value="Gujarati">ગુજરાતી (Gujarati)</option>
+                    <option value="Bengali">বাংলা (Bengali)</option>
+                    <option value="Kannada">ಕನ್ನಡ (Kannada)</option>
                   </select>
                 </div>
 
@@ -191,7 +196,7 @@ export default function LeadModal({ isOpen, onClose, defaultTitle }: LeadModalPr
               </div>
 
               <div>
-                <label className="block text-slate-700 font-medium mb-1">Area of Interest</label>
+                <label className="block text-slate-700 font-medium mb-1">Select Program</label>
                 <select
                   value={formData.interest}
                   onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
@@ -199,9 +204,9 @@ export default function LeadModal({ isOpen, onClose, defaultTitle }: LeadModalPr
                 >
                   <option value="Technical Analysis Pro Masterclass">Technical Analysis Pro Masterclass</option>
                   <option value="Options Trading & Greeks Mastery">Options Trading & Greeks Mastery</option>
-                  <option value="Institutional Price Action & Hedging">Institutional Price Action & Hedging</option>
+                  <option value="Price Action & Smart Money Traps">Price Action & Smart Money Traps</option>
                   <option value="Quantitative & Algorithmic Trading">Quantitative & Algorithmic Trading</option>
-                  <option value="SEBI Research Advisory (Equity/Commodity)">SEBI Research Advisory (Equity/Commodity)</option>
+                  <option value="Stock Market Starter Foundation (Free)">Stock Market Starter Foundation (Free)</option>
                 </select>
               </div>
 
@@ -217,7 +222,7 @@ export default function LeadModal({ isOpen, onClose, defaultTitle }: LeadModalPr
 
               <p className="text-[11px] text-slate-500 text-center flex items-center justify-center gap-1.5">
                 <Lock className="w-3.5 h-3.5 text-emerald-600" />
-                100% Privacy. No spam. SEBI Compliant confidentiality policy.
+                100% Privacy. No spam. Direct counselor assistance.
               </p>
             </form>
           </div>

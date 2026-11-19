@@ -149,7 +149,7 @@ export default function CoursesPage() {
       curriculum: [
         {
           week: "Module 1",
-          topic: "How Stock Exchanges Work: NSE, BSE & SEBI Regulators",
+          topic: "How Stock Exchanges Work: NSE, BSE & Clearing Houses",
           details:
             "Market timing, primary vs secondary markets, order routing, settlement cycles (T+1), and Demat account operations.",
         },
@@ -191,7 +191,7 @@ export default function CoursesPage() {
             Comprehensive Stock Market Masterclasses
           </h1>
           <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            From complete beginner foundation to algorithmic option execution. Learn live during market hours with experienced SEBI-certified mentors in 7 Indian languages.
+            From complete beginner foundation to algorithmic option execution. Learn live during market hours with experienced NISM-certified mentors in 8 Indian languages.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-6 pt-4 text-xs text-slate-600">

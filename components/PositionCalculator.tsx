@@ -34,7 +34,7 @@ export default function PositionCalculator({ onOpenModal }: { onOpenModal?: () =
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <span className="text-xs text-slate-500 font-medium">Trained on SEBI NISM VIII Risk Protocols</span>
+          <span className="text-xs text-slate-500 font-medium">Built on NISM Series VIII Risk Protocols</span>
         </div>
       </div>
 
