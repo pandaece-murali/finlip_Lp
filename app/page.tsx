@@ -600,7 +600,6 @@ export default function Home() {
               <div className="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between">
                 <div>
                   <h4 className="text-xs font-bold text-slate-900">Anand Kulkarni</h4>
-                  <p className="text-[11px] text-slate-500">Software Architect • Pune</p>
                 </div>
                 <span className="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold">
                   Verified Student
@@ -622,7 +621,6 @@ export default function Home() {
               <div className="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between">
                 <div>
                   <h4 className="text-xs font-bold text-slate-900">Senthil Murugan</h4>
-                  <p className="text-[11px] text-slate-500">Business Owner • Coimbatore</p>
                 </div>
                 <span className="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold">
                   Verified Student
@@ -644,7 +642,6 @@ export default function Home() {
               <div className="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between">
                 <div>
                   <h4 className="text-xs font-bold text-slate-900">Dr. Shalini Mehta</h4>
-                  <p className="text-[11px] text-slate-500">Cardiologist • New Delhi</p>
                 </div>
                 <span className="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold">
                   Verified Student

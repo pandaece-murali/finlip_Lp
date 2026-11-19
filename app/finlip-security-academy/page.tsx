@@ -132,112 +132,82 @@ export default function FinlipSecurityLandingPage() {
     {
       name: "Aditya Kulkarni",
       initials: "AK",
-      role: "IT Project Lead",
-      city: "Pune, Maharashtra",
       course: "Options Trading & Greeks",
       rating: 5,
       review:
         "I was losing money every weekly expiry buying cheap OTM call options. Rahul sir's breakdown of Theta decay and non-directional Iron Condors completely transformed my trading. The live morning trading room is worth everything. Attended the batch in Marathi & English.",
-      date: "Oct 2024 Cohort",
     },
     {
       name: "Suresh Sundaram",
       initials: "SS",
-      role: "Textile Business Owner",
-      city: "Chennai, Tamil Nadu",
       course: "Technical Analysis Pro",
       rating: 5,
       review:
         "Learning in Tamil made all the difference. Rahul Rathore sir explains complex Volume Spread Analysis in simple practical terms. No fake screenshots, only pure chart logic and strict 1:2 risk-reward frameworks.",
-      date: "Nov 2024 Cohort",
     },
     {
       name: "Dr. Kavita Verma",
       initials: "KV",
-      role: "Senior Physician",
-      city: "Indore, Madhya Pradesh",
       course: "Stock Market Starter + Options",
       rating: 5,
       review:
         "As a medical specialist with zero financial background, I was intimidated by stock markets. Finlip's NISM certified mentorship gave me a structured, calm framework. Their capital safety rules protect my hard-earned savings.",
-      date: "Sep 2024 Cohort",
     },
     {
       name: "Nilesh Patel",
       initials: "NP",
-      role: "Civil Infrastructure Contractor",
-      city: "Ahmedabad, Gujarat",
       course: "Price Action & Volume Spread",
       rating: 5,
       review:
         "Very transparent and professional academy. Rahul sir's NISM Series VIII credentials and real market experience show in every session. Gujarati and Hindi support made doubt clearing extremely easy.",
-      date: "Dec 2024 Cohort",
     },
     {
       name: "Pooja Bhattacharya",
       initials: "PB",
-      role: "Chartered Accountant",
-      city: "Kolkata, West Bengal",
       course: "Options Trading & Greeks Mastery",
       rating: 5,
       review:
         "As a CA, I appreciate mathematical rigor. Finlip doesn't sell dreams of overnight wealth. They teach Delta-neutral adjustments and statistical probability. My trade journaling discipline improved 10x.",
-      date: "Aug 2024 Cohort",
     },
     {
       name: "Rajesh Menon",
       initials: "RM",
-      role: "Senior Engineering Manager",
-      city: "Bengaluru, Karnataka",
       course: "Quantitative & Algorithmic Systems",
       rating: 5,
       review:
         "Automating my rule-based strategies through Pine Script and broker APIs removed all emotional hesitation from my trading. Outstanding code walkthroughs and risk automation on cloud VPS.",
-      date: "Jan 2025 Cohort",
     },
     {
       name: "Vikram Singh Rathore",
       initials: "VR",
-      role: "Logistics Director",
-      city: "Jaipur, Rajasthan",
       course: "Technical Analysis Pro",
       rating: 5,
       review:
         "Before joining Finlip, I had lost significant capital following Telegram tipsters. Rahul sir taught me how institutional operators accumulate and distribute. Now I never enter a trade without a structural stop-loss.",
-      date: "Nov 2024 Cohort",
     },
     {
       name: "Meenakshi Iyer",
       initials: "MI",
-      role: "Financial Risk Analyst",
-      city: "Mumbai, Maharashtra",
       course: "Options Greeks & Volatility",
       rating: 5,
       review:
         "The live market trading sessions between 9:15 AM and 11:30 AM are unmatched. Seeing Rahul sir analyze real-time open interest shifts and implied volatility spikes during live ticks is pure gold.",
-      date: "Dec 2024 Cohort",
     },
     {
       name: "Gaurav Agrawal",
       initials: "GA",
-      role: "FMCG Wholesale Distributor",
-      city: "Hyderabad, Telangana",
       course: "Price Action Geometry",
       rating: 5,
       review:
         "The support-resistance geometry and multi-timeframe confirmation rules have prevented me from getting trapped in false breakouts. Highly recommended for every serious trader in India.",
-      date: "Oct 2024 Cohort",
     },
     {
       name: "Ananya Sen",
       initials: "AS",
-      role: "Educator & Independent Investor",
-      city: "New Delhi, Delhi NCR",
       course: "Stock Market Starter Program",
       rating: 5,
       review:
         "The best foundation for anyone starting from scratch. Clear explanations on order types, Demat management, and compounding equity portfolios with zero jargon.",
-      date: "Dec 2024 Cohort",
     },
   ];
 
@@ -936,17 +906,11 @@ export default function FinlipSecurityLandingPage() {
                       <h4 className="text-xs sm:text-sm font-bold text-slate-900 leading-tight">
                         {t.name}
                       </h4>
-                      <p className="text-[11px] text-slate-500 mt-0.5">
-                        {t.role} • <span className="text-slate-700 font-medium">{t.city}</span>
-                      </p>
-                      <span className="inline-block mt-1 text-[10px] text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">
+                      <span className="inline-block mt-1 text-[10px] text-emerald-700 font-semibold bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100">
                         {t.course}
                       </span>
                     </div>
                   </div>
-                  <span className="text-[10px] font-mono text-slate-400 shrink-0 hidden sm:inline">
-                    {t.date}
-                  </span>
                 </div>
               </div>
             ))}
