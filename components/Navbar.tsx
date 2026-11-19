@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import LeadModal from "@/components/LeadModal";
 import {
   Shield,
   Phone,
@@ -22,11 +23,21 @@ interface NavbarProps {
 export default function Navbar({ onOpenModal }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [coursesDropdown, setCoursesDropdown] = useState(false);
+  const [internalModalOpen, setInternalModalOpen] = useState(false);
+  const [internalModalTitle, setInternalModalTitle] = useState("Free Consultation Call");
   const pathname = usePathname();
+
+  const handleCallbackClick = (title = "Free Consultation Call") => {
+    if (onOpenModal) {
+      onOpenModal(title);
+    } else {
+      setInternalModalTitle(title);
+      setInternalModalOpen(true);
+    }
+  };
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Meta Ads Portal", href: "/lp" },
     {
       name: "All Masterclasses",
       href: "/courses",
@@ -210,14 +221,14 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center gap-3">
             <button
-              onClick={() => onOpenModal && onOpenModal("Free Consultation Call")}
-              className="text-xs font-semibold text-slate-700 hover:text-slate-900 px-3.5 py-2 rounded-lg border border-slate-300 hover:border-slate-400 hover:bg-slate-50 transition-all"
+              onClick={() => handleCallbackClick("Free Consultation Call")}
+              className="text-xs font-semibold text-slate-700 hover:text-slate-900 px-3.5 py-2 rounded-lg border border-slate-300 hover:border-slate-400 hover:bg-slate-50 transition-all cursor-pointer"
             >
               Request Callback
             </button>
             <Link
-              href="/lp"
-              className="relative inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs text-white bg-emerald-600 hover:bg-emerald-700 shadow-md shadow-emerald-600/20 active:scale-95 transition-all"
+              href="/finlip-security"
+              className="relative inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs text-white bg-emerald-600 hover:bg-emerald-700 shadow-md shadow-emerald-600/20 active:scale-95 transition-all cursor-pointer"
             >
               <Sparkles className="w-3.5 h-3.5 text-white" />
               <span>Book Free Demo</span>
@@ -227,7 +238,7 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
           {/* Mobile Menu Trigger */}
           <div className="flex lg:hidden items-center gap-2">
             <Link
-              href="/lp"
+              href="/finlip-security"
               className="px-3 py-1.5 text-xs font-bold text-white bg-emerald-600 rounded-lg shadow-xs"
             >
               Free Demo
@@ -282,22 +293,29 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                if (onOpenModal) onOpenModal("Free Consultation Call");
+                handleCallbackClick("Free Consultation Call");
               }}
-              className="w-full py-2.5 rounded-lg border border-slate-300 text-sm font-semibold text-slate-800 text-center hover:bg-slate-50"
+              className="w-full py-2.5 rounded-lg border border-slate-300 text-sm font-semibold text-slate-800 text-center hover:bg-slate-50 cursor-pointer"
             >
               Request a Callback
             </button>
             <Link
-              href="/lp"
+              href="/finlip-security"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm text-center shadow-md shadow-emerald-600/20 block"
+              className="w-full py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm text-center shadow-md shadow-emerald-600/20 block cursor-pointer"
             >
               Book Free Live Demo Session
             </Link>
           </div>
         </div>
       )}
+
+      {/* Internal Callback Modal Fallback */}
+      <LeadModal
+        isOpen={internalModalOpen}
+        onClose={() => setInternalModalOpen(false)}
+        defaultTitle={internalModalTitle}
+      />
     </header>
   );
 }

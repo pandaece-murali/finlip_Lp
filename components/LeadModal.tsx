@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, CheckCircle2, Award, User, Phone, Mail, Lock } from "lucide-react";
+import { X, CheckCircle2, Award, User, Phone, Mail, Lock, MapPin } from "lucide-react";
 
 interface LeadModalProps {
   isOpen: boolean;
@@ -15,8 +15,8 @@ export default function LeadModal({ isOpen, onClose, defaultTitle, defaultCourse
     name: "",
     phone: "",
     email: "",
+    city: "",
     interest: defaultCourse || "Technical Analysis Pro Masterclass",
-    language: "English",
     experience: "Beginner (0-1 yrs)",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,15 +40,15 @@ export default function LeadModal({ isOpen, onClose, defaultTitle, defaultCourse
       name: "",
       phone: "",
       email: "",
+      city: "",
       interest: defaultCourse || "Technical Analysis Pro Masterclass",
-      language: "English",
       experience: "Beginner (0-1 yrs)",
     });
     onClose();
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-200">
       <div className="relative w-full max-w-lg bg-white border border-slate-200 rounded-3xl shadow-2xl p-6 sm:p-8 overflow-hidden text-slate-900">
         <div className="absolute -top-24 -right-24 w-60 h-60 bg-emerald-100/60 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute -bottom-24 -left-24 w-60 h-60 bg-blue-100/60 rounded-full blur-3xl pointer-events-none"></div>
@@ -69,7 +69,7 @@ export default function LeadModal({ isOpen, onClose, defaultTitle, defaultCourse
             </div>
             <h3 className="text-2xl font-bold text-slate-900">Registration Confirmed!</h3>
             <p className="text-sm text-slate-600 max-w-sm mx-auto">
-              Thank you, <span className="text-emerald-700 font-semibold">{formData.name || "Trader"}</span>! A Finlip Senior Mentor will reach out via WhatsApp/Call in your preferred language (<span className="text-slate-900 font-medium">{formData.language}</span>) within 15 minutes.
+              Thank you, <span className="text-emerald-700 font-semibold">{formData.name || "Trader"}</span>! A Finlip Senior Mentor will reach out via WhatsApp/Call to connect with you in <span className="text-slate-900 font-medium">{formData.city || "your city"}</span> within 15 minutes.
             </p>
 
             <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-left text-xs space-y-2 text-slate-700">
@@ -82,8 +82,8 @@ export default function LeadModal({ isOpen, onClose, defaultTitle, defaultCourse
                 <span className="font-mono text-slate-900">{formData.phone}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-slate-500">Language Cohort:</span>
-                <span className="font-semibold text-slate-900">{formData.language}</span>
+                <span className="text-slate-500">City / Location:</span>
+                <span className="font-semibold text-slate-900">{formData.city || "India"}</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-slate-500">Session Pass:</span>
@@ -163,21 +163,18 @@ export default function LeadModal({ isOpen, onClose, defaultTitle, defaultCourse
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-700 font-medium mb-1">Course Language</label>
-                  <select
-                    value={formData.language}
-                    onChange={(e) => setFormData({ ...formData, language: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl py-2.5 px-3 text-slate-900 focus:bg-white focus:outline-none focus:border-emerald-600 transition-colors font-medium"
-                  >
-                    <option value="English">English</option>
-                    <option value="Hindi">हिन्दी (Hindi)</option>
-                    <option value="Tamil">தமிழ் (Tamil)</option>
-                    <option value="Telugu">తెలుగు (Telugu)</option>
-                    <option value="Marathi">मराठी (Marathi)</option>
-                    <option value="Gujarati">ગુજરાતી (Gujarati)</option>
-                    <option value="Bengali">বাংলা (Bengali)</option>
-                    <option value="Kannada">ಕನ್ನಡ (Kannada)</option>
-                  </select>
+                  <label className="block text-slate-700 font-medium mb-1">City / Location</label>
+                  <div className="relative">
+                    <MapPin className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Mumbai, Indore, Pune"
+                      value={formData.city}
+                      onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl py-2.5 pl-10 pr-4 text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-emerald-600 transition-colors"
+                    />
+                  </div>
                 </div>
 
                 <div>

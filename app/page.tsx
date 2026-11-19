@@ -187,7 +187,7 @@ export default function Home() {
                 </button>
 
                 <Link
-                  href="/lp"
+                  href="/finlip-security"
                   className="w-full sm:w-auto px-6 py-3.5 rounded-xl font-semibold text-sm text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 hover:border-slate-400 transition-all text-center flex items-center justify-center gap-2 shadow-2xs"
                 >
                   <BookOpen className="w-4 h-4 text-slate-500" />
@@ -475,14 +475,15 @@ export default function Home() {
 
                   <div className="flex items-center gap-2 w-full sm:w-auto">
                     <button
+                      type="button"
                       onClick={() => openLeadModal(`Enrollment for ${c.title}`)}
-                      className="w-full sm:w-auto px-5 py-2.5 rounded-xl font-bold text-xs text-white bg-emerald-600 hover:bg-emerald-700 transition-colors shadow-xs"
+                      className="w-full sm:w-auto px-5 py-2.5 rounded-xl font-bold text-xs text-white bg-emerald-600 hover:bg-emerald-700 transition-colors shadow-xs cursor-pointer active:scale-95"
                     >
                       Book Free Demo
                     </button>
                     <Link
-                      href="/lp"
-                      className="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 transition-colors"
+                      href="/finlip-security"
+                      className="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 transition-colors cursor-pointer"
                     >
                       View Details
                     </Link>
@@ -494,7 +495,7 @@ export default function Home() {
 
           <div className="mt-12 text-center">
             <Link
-              href="/lp"
+              href="/finlip-security"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-50 border border-slate-300 hover:border-emerald-500 text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-all shadow-2xs"
             >
               <span>Explore All Certifications & Syllabus Details on Meta Portal</span>
@@ -693,8 +694,9 @@ export default function Home() {
 
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
+              type="button"
               onClick={() => openLeadModal("Free Demo Pass - Bottom CTA")}
-              className="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-sm text-emerald-950 bg-white hover:bg-emerald-50 shadow-xl shadow-black/10 active:scale-95 transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-sm text-emerald-950 bg-white hover:bg-emerald-50 shadow-xl shadow-black/10 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <Sparkles className="w-4 h-4 text-emerald-700" />
               <span>Claim Your Free Demo Pass</span>

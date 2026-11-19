@@ -18,7 +18,7 @@ export default function ContactPage() {
     name: "",
     phone: "",
     email: "",
-    language: "English",
+    city: "",
     department: "Masterclass Enrollment",
     message: "",
   });
@@ -127,7 +127,7 @@ export default function ContactPage() {
                     </div>
                     <h3 className="text-2xl font-bold text-slate-900">Message Received!</h3>
                     <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                      Thank you for reaching out, <span className="text-emerald-700 font-semibold">{formData.name}</span>. A senior course advisor will connect with you on WhatsApp / Phone within 2 business hours in your chosen language ({formData.language}).
+                      Thank you for reaching out, <span className="text-emerald-700 font-semibold">{formData.name}</span>. A senior course advisor will connect with you on WhatsApp / Phone within 2 business hours in <span className="text-slate-900 font-medium">{formData.city || "your city"}</span>.
                     </p>
                     <button
                       onClick={() => setSubmitted(false)}
@@ -192,21 +192,16 @@ export default function ContactPage() {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-slate-700 font-medium mb-1">
-                            Preferred Language
+                            City / Location
                           </label>
-                          <select
-                            value={formData.language}
-                            onChange={(e) => setFormData({ ...formData, language: e.target.value })}
-                            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-slate-900 focus:bg-white focus:outline-none focus:border-emerald-600"
-                          >
-                            <option value="English">English</option>
-                            <option value="Hindi">हिन्दी (Hindi)</option>
-                            <option value="Tamil">தமிழ் (Tamil)</option>
-                            <option value="Telugu">తెలుగు (Telugu)</option>
-                            <option value="Marathi">मराठी (Marathi)</option>
-                            <option value="Bengali">বাংলা (Bengali)</option>
-                            <option value="Gujarati">ગુજરાતી (Gujarati)</option>
-                          </select>
+                          <input
+                            type="text"
+                            required
+                            value={formData.city}
+                            onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                            placeholder="e.g. Mumbai, Indore, Pune"
+                            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-emerald-600"
+                          />
                         </div>
 
                         <div>
