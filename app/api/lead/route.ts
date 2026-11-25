@@ -20,8 +20,58 @@ function getTransporter(user: string, pass: string) {
   return cachedTransporter;
 }
 
+// Security: HTML escaping to prevent email HTML injection / XSS
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+// Security: Clean and strip control characters / newlines to prevent header injection
+function sanitizeText(str: unknown, maxLen = 100): string {
+  if (typeof str !== "string") return "";
+  return str.replace(/[\r\n\t\x00-\x1F\x7F]/g, " ").trim().slice(0, maxLen);
+}
+
+// Security: In-memory rate limiting to prevent spam / DDoS abuse on lead API
+const rateLimitMap = new Map<string, number[]>();
+const RATE_LIMIT_WINDOW_MS = 5 * 60 * 1000; // 5-minute sliding window
+const MAX_REQUESTS_PER_WINDOW = 6;
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const timestamps = rateLimitMap.get(ip) || [];
+  const recent = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
+  if (recent.length >= MAX_REQUESTS_PER_WINDOW) {
+    return true;
+  }
+  recent.push(now);
+  rateLimitMap.set(ip, recent);
+
+  // Periodic pruning of stale entries
+  if (rateLimitMap.size > 2000) {
+    for (const [key, val] of rateLimitMap.entries()) {
+      if (val.every((t) => now - t > RATE_LIMIT_WINDOW_MS)) {
+        rateLimitMap.delete(key);
+      }
+    }
+  }
+  return false;
+}
+
 export async function POST(req: Request) {
   try {
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "127.0.0.1";
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        { success: false, error: "Too many submission attempts. Please wait a few minutes." },
+        { status: 429 }
+      );
+    }
+
     const body = await req.json();
     const {
       name,
@@ -33,10 +83,19 @@ export async function POST(req: Request) {
       source = "Website Form",
     } = body;
 
+    // Sanitize all inputs
+    const cleanName = sanitizeText(name, 80);
+    const cleanPhone = phone ? String(phone).replace(/[^0-9]/g, "").slice(0, 15) : "";
+    const cleanEmail = sanitizeText(email, 100);
+    const cleanCity = sanitizeText(city, 80);
+    const cleanCourse = sanitizeText(course, 100);
+    const cleanExperience = sanitizeText(experience, 80);
+    const cleanSource = sanitizeText(source, 80);
+
     // Validation
-    if (!name || !phone) {
+    if (!cleanName || cleanPhone.length < 10) {
       return NextResponse.json(
-        { success: false, error: "Name and phone number are required." },
+        { success: false, error: "Valid name and 10-digit mobile number are required." },
         { status: 400 }
       );
     }
@@ -48,10 +107,10 @@ export async function POST(req: Request) {
     });
 
     const passId = "FLIP-PASS-" + Math.floor(1000 + Math.random() * 9000);
-    const cleanPhone = phone.replace(/[^0-9]/g, "");
     const waLink = `https://wa.me/91${cleanPhone.slice(-10)}`;
     const receiverEmail = process.env.LEAD_RECEIVER_EMAIL || process.env.GMAIL_USER || "finlipsecurity@gmail.com";
 
+    // Build safe HTML template with fully escaped values
     const mailHtml = `
 <!DOCTYPE html>
 <html>
@@ -83,52 +142,52 @@ export async function POST(req: Request) {
       <p>NEW STUDENT ADMISSIONS REGISTRATION</p>
     </div>
     <div class="content">
-      <span class="badge">Session Pass: ${passId}</span>
+      <span class="badge">Session Pass: ${escapeHtml(passId)}</span>
       <h2 style="margin: 0 0 12px; color: #0f172a; font-size: 18px;">New Lead Received!</h2>
       <p style="margin: 0 0 16px; font-size: 13px; color: #475569;">A prospective trader has registered for a free live masterclass demo seat.</p>
       
       <table class="lead-table">
         <tr>
           <td class="label">Full Name</td>
-          <td class="value">${name}</td>
+          <td class="value">${escapeHtml(cleanName)}</td>
         </tr>
         <tr>
           <td class="label">WhatsApp Phone</td>
-          <td class="value"><a href="tel:${cleanPhone}" style="color: #059669; text-decoration: none;">${phone}</a></td>
+          <td class="value"><a href="tel:${escapeHtml(cleanPhone)}" style="color: #059669; text-decoration: none;">${escapeHtml(cleanPhone)}</a></td>
         </tr>
         <tr>
           <td class="label">Email Address</td>
-          <td class="value"><a href="mailto:${email}" style="color: #059669; text-decoration: none;">${email}</a></td>
+          <td class="value"><a href="mailto:${escapeHtml(cleanEmail)}" style="color: #059669; text-decoration: none;">${escapeHtml(cleanEmail)}</a></td>
         </tr>
         <tr>
           <td class="label">City / Region</td>
-          <td class="value">${city}</td>
+          <td class="value">${escapeHtml(cleanCity)}</td>
         </tr>
         <tr>
           <td class="label">Selected Program</td>
-          <td class="value" style="color: #059669;">${course}</td>
+          <td class="value" style="color: #059669;">${escapeHtml(cleanCourse)}</td>
         </tr>
         <tr>
           <td class="label">Trading Experience</td>
-          <td class="value">${experience}</td>
+          <td class="value">${escapeHtml(cleanExperience)}</td>
         </tr>
         <tr>
           <td class="label">Registration Source</td>
-          <td class="value">${source}</td>
+          <td class="value">${escapeHtml(cleanSource)}</td>
         </tr>
         <tr>
           <td class="label">Time (IST)</td>
-          <td class="value">${timestamp}</td>
+          <td class="value">${escapeHtml(timestamp)}</td>
         </tr>
       </table>
 
       <div style="margin-top: 24px; text-align: center;">
-        <a href="${waLink}" class="btn btn-wa" target="_blank" style="margin-right: 8px;">Message on WhatsApp</a>
-        <a href="tel:${cleanPhone}" class="btn btn-call">Call Candidate</a>
+        <a href="${escapeHtml(waLink)}" class="btn btn-wa" target="_blank" style="margin-right: 8px;">Message on WhatsApp</a>
+        <a href="tel:${escapeHtml(cleanPhone)}" class="btn btn-call">Call Candidate</a>
       </div>
     </div>
     <div class="footer">
-      Finlip Security Lead Engine • Lead delivered to ${receiverEmail}
+      Finlip Security Lead Engine • Lead delivered to ${escapeHtml(receiverEmail)}
     </div>
   </div>
 </body>
@@ -144,15 +203,17 @@ export async function POST(req: Request) {
         if (gmailUser && gmailAppPassword) {
           try {
             const transporter = getTransporter(gmailUser, gmailAppPassword);
+            const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail);
+
             await transporter.sendMail({
               from: `"Finlip Security Leads" <${gmailUser}>`,
               to: receiverEmail,
-              replyTo: email && email.includes("@") ? email : undefined,
-              subject: `🔥 New Lead: ${name} - ${course} (${city})`,
-              text: `New Lead Details:\n\nPass ID: ${passId}\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nCity: ${city}\nCourse: ${course}\nExperience: ${experience}\nSource: ${source}\nTimestamp: ${timestamp}\nWhatsApp: ${waLink}`,
+              replyTo: isValidEmail ? cleanEmail : undefined,
+              subject: `🔥 New Lead: ${cleanName} - ${cleanCourse} (${cleanCity})`,
+              text: `New Lead Details:\n\nPass ID: ${passId}\nName: ${cleanName}\nPhone: ${cleanPhone}\nEmail: ${cleanEmail}\nCity: ${cleanCity}\nCourse: ${cleanCourse}\nExperience: ${cleanExperience}\nSource: ${cleanSource}\nTimestamp: ${timestamp}\nWhatsApp: ${waLink}`,
               html: mailHtml,
             });
-            console.log(`[Lead API] Email dispatched successfully for ${name} (${passId})`);
+            console.log(`[Lead API] Email dispatched successfully for ${cleanName} (${passId})`);
           } catch (err: unknown) {
             console.error("[Lead API] Nodemailer Gmail SMTP Error:", err);
           }
@@ -176,13 +237,13 @@ export async function POST(req: Request) {
               body: JSON.stringify({
                 timestamp,
                 passId,
-                name,
-                phone,
-                email,
-                city,
-                course,
-                experience,
-                source,
+                name: cleanName,
+                phone: cleanPhone,
+                email: cleanEmail,
+                city: cleanCity,
+                course: cleanCourse,
+                experience: cleanExperience,
+                source: cleanSource,
                 waLink,
               }),
               signal: controller.signal,
@@ -190,7 +251,7 @@ export async function POST(req: Request) {
             clearTimeout(timeoutId);
 
             if (sheetResponse.ok) {
-              console.log(`[Lead API] Google Sheet updated successfully for ${name}`);
+              console.log(`[Lead API] Google Sheet updated successfully for ${cleanName}`);
             } else {
               console.warn(`[Lead API] Google Sheet returned status ${sheetResponse.status}`);
             }

@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { Shield, Phone, Mail, Award, FileText, CheckCircle2, ExternalLink } from "lucide-react";
+import Image from "next/image";
+import { Phone, Mail, Award, FileText, CheckCircle2, ExternalLink } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -65,13 +66,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Info */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-black shadow-xs">
-                <Shield className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-lg font-black tracking-tight text-slate-900">
-                FINLIP <span className="text-emerald-700 font-light">SECURITY</span>
-              </span>
+            <Link href="/" className="inline-block">
+              <Image
+                src="/finlip-security-logo-transparent.png"
+                alt="Finlip Security - Stock Market Academy"
+                width={160}
+                height={56}
+                className="h-10 w-auto object-contain"
+              />
             </Link>
             <p className="text-slate-600 leading-relaxed pr-6 text-xs">
               Finlip Security is an Indian financial market training academy led by NISM Certified Mentor Rahul Rathore. We empower traders with quantitative price action setups, systematic option Greeks mastery, and disciplined risk-to-reward ratios.

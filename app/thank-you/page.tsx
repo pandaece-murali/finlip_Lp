@@ -7,18 +7,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import {
   CheckCircle2,
-  Calendar,
-  Clock,
-  Download,
   Phone,
   Mail,
   ExternalLink,
   Award,
-  ArrowRight,
-  Shield,
-  MessageSquare,
   Sparkles,
-  BookOpen,
   Home,
 } from "lucide-react";
 

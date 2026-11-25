@@ -2,10 +2,10 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import LeadModal from "@/components/LeadModal";
 import {
-  Shield,
   Phone,
   Mail,
   ChevronDown,
@@ -95,11 +95,11 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
             </a>
             <span className="text-slate-600">|</span>
             <a
-              href="mailto:support@finlipsecurity.com"
+              href="mailto:finlipsecurity@gmail.com"
               className="hidden sm:flex items-center gap-1.5 hover:text-emerald-400 transition-colors"
             >
               <Mail className="w-3 h-3 text-emerald-400" />
-              <span>support@finlipsecurity.com</span>
+              <span>finlipsecurity@gmail.com</span>
             </a>
             <span className="text-slate-600 hidden sm:inline">|</span>
             <span className="inline-flex items-center gap-1 text-emerald-400 font-semibold">
@@ -115,22 +115,14 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-600 via-teal-600 to-blue-700 flex items-center justify-center shadow-md shadow-emerald-600/20 group-hover:scale-105 transition-transform duration-200">
-              <Shield className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="text-xl font-black tracking-tight text-slate-900 group-hover:text-emerald-600 transition-colors">
-                  FINLIP
-                </span>
-                <span className="text-xl font-light tracking-wide text-emerald-600">
-                  SECURITY
-                </span>
-              </div>
-              <p className="text-[10px] tracking-wider text-slate-500 uppercase font-medium">
-                NISM Certified Training
-              </p>
-            </div>
+            <Image
+              src="/finlip-security-logo-transparent.png"
+              alt="Finlip Security - NISM Certified Stock Market Academy"
+              width={180}
+              height={64}
+              priority
+              className="h-11 sm:h-12 w-auto object-contain transition-transform duration-200 group-hover:scale-102"
+            />
           </Link>
 
           {/* Desktop Navigation */}

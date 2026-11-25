@@ -39,6 +39,16 @@ export const metadata: Metadata = {
   creator: "Finlip Security Academy",
   publisher: "Finlip Security",
   applicationName: "Finlip Security Academy",
+  icons: {
+    icon: [
+      { url: "/finlip-favicon.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    shortcut: "/finlip-favicon.png",
+    apple: [
+      { url: "/finlip-favicon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   robots: {
     index: true,
     follow: true,
@@ -122,8 +132,8 @@ export default function RootLayout({
         "name": "Finlip Security Market Academy",
         "alternateName": "Finlip Security",
         "url": "https://finlip.in",
-        "logo": "https://finlip.in/logo.png",
-        "image": "https://finlip.in/og-image.jpg",
+        "logo": "https://finlip.in/finlip-security-logo-transparent.png",
+        "image": "https://finlip.in/finlip-security-logo-transparent.png",
         "description":
           "Finlip Security provides institutional-grade technical analysis, options trading masterclasses, and equity derivatives education mentored by NISM Series VIII certified market practitioners.",
         "telephone": "+91-731-485-2000",

@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
-  Shield,
   Award,
   CheckCircle2,
   Sparkles,
@@ -421,22 +421,14 @@ export default function FinlipSecurityLandingPage() {
       <header className="border-b border-slate-200 bg-white/95 sticky top-0 z-40 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-600 via-teal-600 to-blue-700 flex items-center justify-center shadow-md shadow-emerald-600/20">
-              <Shield className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="text-xl font-black tracking-tight text-slate-900">
-                  FINLIP
-                </span>
-                <span className="text-xl font-light tracking-wide text-emerald-600">
-                  SECURITY
-                </span>
-              </div>
-              <p className="text-[10px] tracking-wider text-slate-500 uppercase font-medium">
-                NISM Certified Market Academy
-              </p>
-            </div>
+            <Image
+              src="/finlip-security-logo-transparent.png"
+              alt="Finlip Security Academy"
+              width={180}
+              height={64}
+              priority
+              className="h-11 sm:h-12 w-auto object-contain"
+            />
           </Link>
 
           <div className="flex items-center gap-3">

@@ -3,13 +3,7 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import {
-  Award,
-  CheckCircle,
-  Mail,
-  Phone,
-  Building,
-} from "lucide-react";
+import { Award } from "lucide-react";
 
 export default function CompliancePage() {
   const complaintData = [

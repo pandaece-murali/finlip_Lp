@@ -8,7 +8,6 @@ import {
   BookOpen,
   Award,
   CheckCircle2,
-  Calendar,
   Download,
   Video,
   Users,
