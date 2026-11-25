@@ -1,7 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, CheckCircle2, Award, User, Phone, Mail, Lock, MapPin } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { X, CheckCircle2, Award, User, Phone, Mail, Lock, MapPin, ArrowRight } from "lucide-react";
 
 interface LeadModalProps {
   isOpen: boolean;
@@ -11,6 +13,7 @@ interface LeadModalProps {
 }
 
 export default function LeadModal({ isOpen, onClose, defaultTitle, defaultCourse }: LeadModalProps) {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -21,17 +24,51 @@ export default function LeadModal({ isOpen, onClose, defaultTitle, defaultCourse
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [passId, setPassId] = useState("FLIP-PASS-7842");
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    setTimeout(() => {
+    let finalPass = "PASS-" + Math.floor(1000 + Math.random() * 9000);
+
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          city: formData.city,
+          course: formData.interest,
+          experience: formData.experience,
+          source: defaultTitle || "Lead Modal",
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.passId) {
+          finalPass = data.passId.replace("FLIP-", "");
+          setPassId(data.passId);
+        }
+      }
+    } catch (err) {
+      console.error("Submission error:", err);
+    } finally {
       setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 800);
+    }
+
+    // Direct instant redirect to Thank You page with candidate details
+    router.push(
+      `/thank-you?name=${encodeURIComponent(formData.name || "Trader")}&course=${encodeURIComponent(
+        formData.interest
+      )}&city=${encodeURIComponent(formData.city || "India")}&pass=${encodeURIComponent(finalPass)}`
+    );
+    onClose();
   };
 
   const handleReset = () => {
@@ -87,16 +124,26 @@ export default function LeadModal({ isOpen, onClose, defaultTitle, defaultCourse
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-slate-500">Session Pass:</span>
-                <span className="font-mono text-emerald-700 font-bold">FLIP-PASS-{Math.floor(1000 + Math.random() * 9000)}</span>
+                <span className="font-mono text-emerald-700 font-bold">{passId}</span>
               </div>
             </div>
 
-            <button
-              onClick={handleReset}
-              className="mt-6 w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl transition-all shadow-md shadow-emerald-600/20"
-            >
-              Done & Return to Site
-            </button>
+            <div className="pt-2 flex flex-col gap-2">
+              <Link
+                href={`/thank-you?name=${encodeURIComponent(formData.name || "Trader")}&course=${encodeURIComponent(formData.interest)}&city=${encodeURIComponent(formData.city || "India")}&pass=${encodeURIComponent(passId.replace("FLIP-", ""))}`}
+                onClick={handleReset}
+                className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl transition-all shadow-md shadow-emerald-600/20 text-center flex items-center justify-center gap-1.5 text-xs sm:text-sm"
+              >
+                <span>View Full Confirmation Pass</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <button
+                onClick={handleReset}
+                className="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition-colors cursor-pointer"
+              >
+                Close & Return to Site
+              </button>
+            </div>
           </div>
         ) : (
           <div>

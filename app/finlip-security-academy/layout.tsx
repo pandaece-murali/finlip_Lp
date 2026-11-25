@@ -5,13 +5,13 @@ export const metadata: Metadata = {
   description:
     "Book your Free Live Demo Session and receive the complete 42-page Market Structure Blueprint via WhatsApp. Mentored by Rahul Rathore (NISM Series VIII Certified).",
   alternates: {
-    canonical: "https://www.finlipsecurity.com/finlip-security-academy",
+    canonical: "https://finlip.in/finlip-security-academy",
   },
   openGraph: {
     title: "Finlip Security Academy | Free Live Demo Masterclass",
     description:
       "Join the live morning trading room and master option Greeks, price action geometry, and capital safety rules.",
-    url: "https://www.finlipsecurity.com/finlip-security-academy",
+    url: "https://finlip.in/finlip-security-academy",
   },
 };
 

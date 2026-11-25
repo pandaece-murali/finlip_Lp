@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Shield, Phone, Mail, Award, FileText, CheckCircle2 } from "lucide-react";
+import { Shield, Phone, Mail, Award, FileText, CheckCircle2, ExternalLink } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -86,8 +86,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2 text-slate-700">
                 <Mail className="w-4 h-4 text-emerald-600 shrink-0" />
-                <a href="mailto:support@finlipsecurity.com" className="hover:text-emerald-700 font-medium">
-                  support@finlipsecurity.com
+                <a href="mailto:finlipsecurity@gmail.com" className="hover:text-emerald-700 font-medium">
+                  finlipsecurity@gmail.com
                 </a>
               </div>
             </div>
@@ -167,6 +167,31 @@ export default function Footer() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Official Exchange Broking Partner Demat Banner */}
+        <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-blue-50 via-slate-50 to-blue-50 border border-blue-200/80 flex flex-col md:flex-row items-center justify-between gap-4 shadow-2xs">
+          <div className="space-y-1 text-center md:text-left">
+            <div className="inline-flex items-center gap-1.5 text-blue-700 font-bold text-xs">
+              <Award className="w-4 h-4 text-blue-600" />
+              <span>OFFICIAL BROKING PARTNER: CHOICE INDIA</span>
+            </div>
+            <h4 className="text-sm sm:text-base font-extrabold text-slate-900">
+              Open Your Free Trading & Demat Account
+            </h4>
+            <p className="text-xs text-slate-600 max-w-2xl">
+              Exchange registered Authorised Person referral. Seamless paperless onboarding with Choice Equity Broking Pvt Ltd.
+            </p>
+          </div>
+          <a
+            href="https://choiceindia.com/register?refercode=SVBK&source=Q0hPSUNFX0NPTk5FQ1Q="
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition-all shrink-0 cursor-pointer"
+          >
+            <span>Open Demat Account</span>
+            <ExternalLink className="w-4 h-4 text-white" />
+          </a>
         </div>
 
         {/* Educational Disclaimers & Risk Warning */}

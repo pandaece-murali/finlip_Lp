@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   description:
     "Learn about Finlip Security's mission, campuses in Indore and Mumbai, and lead mentor Rahul Rathore (NISM Series VIII Certified, NSE & BSE AP).",
   alternates: {
-    canonical: "https://www.finlipsecurity.com/about",
+    canonical: "https://finlip.in/about",
   },
   openGraph: {
     title: "About Rahul Rathore & Finlip Security",
     description: "Empowering Indian traders with mathematical risk management and certified mentorship.",
-    url: "https://www.finlipsecurity.com/about",
+    url: "https://finlip.in/about",
   },
 };
 

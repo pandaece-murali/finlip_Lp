@@ -5,7 +5,12 @@ export const metadata: Metadata = {
   description:
     "Institutional risk management frameworks, mathematical position sizing, and capital protection protocols for active derivatives participants.",
   alternates: {
-    canonical: "https://www.finlipsecurity.com/advisory",
+    canonical: "https://finlip.in/advisory",
+  },
+  openGraph: {
+    title: "Market Strategy & Risk Management | Finlip Security",
+    description: "Institutional risk management frameworks and capital protection protocols.",
+    url: "https://finlip.in/advisory",
   },
 };
 

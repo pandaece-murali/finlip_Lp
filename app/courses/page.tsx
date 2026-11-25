@@ -13,6 +13,7 @@ import {
   Video,
   Users,
   ArrowRight,
+  ExternalLink,
 } from "lucide-react";
 
 export default function CoursesPage() {
@@ -234,6 +235,18 @@ export default function CoursesPage() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+                  {course.id === "beginner" && (
+                    <a
+                      href="https://choiceindia.com/register?refercode=SVBK&source=Q0hPSUNFX0NPTk5FQ1Q="
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-blue-200 bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-2xs"
+                      title="Open Free Demat Account with Choice"
+                    >
+                      <span>Open Demat Account</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  )}
                   <button
                     onClick={() => openModal(`Download Syllabus for ${course.title}`)}
                     className="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-slate-300 hover:border-slate-400 text-slate-700 hover:bg-slate-50 font-semibold text-xs flex items-center justify-center gap-2 transition-colors shadow-2xs"

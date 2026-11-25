@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   description:
     "Explore comprehensive institutional trading courses: Technical Analysis Pro, Options Trading & Greeks, Quant Algo Systems, and Stock Market Starter.",
   alternates: {
-    canonical: "https://www.finlipsecurity.com/courses",
+    canonical: "https://finlip.in/courses",
   },
   openGraph: {
     title: "All Stock Market Masterclass Tracks | Finlip Security",
     description: "Institutional stock market education with live morning trading room access.",
-    url: "https://www.finlipsecurity.com/courses",
+    url: "https://finlip.in/courses",
   },
 };
 

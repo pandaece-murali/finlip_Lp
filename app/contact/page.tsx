@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import {
@@ -13,6 +14,7 @@ import {
 } from "lucide-react";
 
 export default function ContactPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -24,13 +26,45 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    let finalPass = "PASS-" + Math.floor(1000 + Math.random() * 9000);
+
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          city: formData.city,
+          course: formData.department,
+          experience: formData.message || "Contact Inquiry Desk",
+          source: "Contact Page Desk",
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.passId) {
+          finalPass = data.passId.replace("FLIP-", "");
+        }
+      }
+    } catch (err) {
+      console.error("Submission error:", err);
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-    }, 800);
+    }
+
+    // Direct instant redirect to Thank You page with candidate details
+    router.push(
+      `/thank-you?name=${encodeURIComponent(formData.name || "Trader")}&course=${encodeURIComponent(
+        formData.department
+      )}&city=${encodeURIComponent(formData.city || "India")}&pass=${encodeURIComponent(finalPass)}`
+    );
   };
 
   return (
@@ -83,10 +117,9 @@ export default function ContactPage() {
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">Email Addresses</h4>
-                    <p className="text-slate-600 mt-0.5">Admissions: support@finlipsecurity.com</p>
-                    <p className="text-slate-600">Compliance: compliance@finlipsecurity.com</p>
-                    <p className="text-slate-600">Careers: careers@finlipsecurity.com</p>
+                    <h4 className="font-bold text-slate-900">Email Address</h4>
+                    <p className="text-slate-600 mt-0.5">Admissions & Support: finlipsecurity@gmail.com</p>
+                    <p className="text-slate-600">Official Desk: finlipsecurity@gmail.com</p>
                   </div>
                 </div>
 

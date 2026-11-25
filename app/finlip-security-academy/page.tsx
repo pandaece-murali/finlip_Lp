@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Shield,
   Award,
@@ -18,9 +19,11 @@ import {
   Quote,
   Lock,
   MapPin,
+  ExternalLink,
 } from "lucide-react";
 
 export default function FinlipSecurityLandingPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -31,6 +34,7 @@ export default function FinlipSecurityLandingPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [passId, setPassId] = useState("FLIP-PASS-9134");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [highlightForm, setHighlightForm] = useState(false);
   const [isTestimonialHovered, setIsTestimonialHovered] = useState(false);
@@ -242,13 +246,46 @@ export default function FinlipSecurityLandingPage() {
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    let finalPass = "PASS-" + Math.floor(1000 + Math.random() * 9000);
+
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          city: formData.city,
+          course: formData.course,
+          experience: formData.experience,
+          source: "Finlip Security Academy LP",
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.passId) {
+          finalPass = data.passId.replace("FLIP-", "");
+          setPassId(data.passId);
+        }
+      }
+    } catch (err) {
+      console.error("Submission error:", err);
+    } finally {
       setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 800);
+    }
+
+    // Direct instant redirect to Thank You page with candidate details
+    router.push(
+      `/thank-you?name=${encodeURIComponent(formData.name || "Trader")}&course=${encodeURIComponent(
+        formData.course
+      )}&city=${encodeURIComponent(formData.city || "India")}&pass=${encodeURIComponent(finalPass)}`
+    );
   };
 
   const scrollToForm = (courseName?: string) => {
@@ -293,13 +330,13 @@ export default function FinlipSecurityLandingPage() {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://www.finlipsecurity.com",
+            "item": "https://finlip.in",
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Finlip Security Academy",
-            "item": "https://www.finlipsecurity.com/finlip-security-academy",
+            "item": "https://finlip.in/finlip-security-academy",
           },
         ],
       },
@@ -319,9 +356,9 @@ export default function FinlipSecurityLandingPage() {
         "name": "Options Trading & Greeks Mastery",
         "description": "Decode Delta, Theta, Vega & Gamma with practical live charts, open interest analysis, and zero-loss hedging mechanics.",
         "provider": {
-          "@type": "Organization",
+          "@type": "EducationalOrganization",
           "name": "Finlip Security Market Academy",
-          "sameAs": "https://www.finlipsecurity.com",
+          "sameAs": "https://finlip.in",
         },
         "instructor": {
           "@type": "Person",
@@ -340,9 +377,9 @@ export default function FinlipSecurityLandingPage() {
         "name": "Technical Analysis Pro Masterclass",
         "description": "Master candlestick geometry, volume profile, institutional accumulation, and live morning market trading.",
         "provider": {
-          "@type": "Organization",
+          "@type": "EducationalOrganization",
           "name": "Finlip Security Market Academy",
-          "sameAs": "https://www.finlipsecurity.com",
+          "sameAs": "https://finlip.in",
         },
         "instructor": {
           "@type": "Person",
@@ -403,10 +440,19 @@ export default function FinlipSecurityLandingPage() {
           </Link>
 
           <div className="flex items-center gap-3">
+            <a
+              href="https://choiceindia.com/register?refercode=SVBK&source=Q0hPSUNFX0NPTk5FQ1Q="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl font-bold text-xs text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-all cursor-pointer shadow-2xs"
+            >
+              <span>Open Demat Account</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
             <button
               type="button"
               onClick={() => scrollToForm()}
-              className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md shadow-emerald-600/20 active:scale-95 transition-all cursor-pointer"
+              className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md shadow-emerald-600/20 active:scale-95 transition-all cursor-pointer"
             >
               Claim Free Demo Pass
             </button>
@@ -519,12 +565,21 @@ export default function FinlipSecurityLandingPage() {
                       <strong className="text-slate-900">{formData.city || "your city"}</strong> on WhatsApp at{" "}
                       <strong className="font-mono text-slate-900">{formData.phone}</strong>.
                     </p>
-                    <button
-                      onClick={() => setIsSuccess(false)}
-                      className="mt-4 px-6 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs rounded-xl cursor-pointer"
-                    >
-                      Submit Another Registration
-                    </button>
+                    <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-2">
+                      <Link
+                        href={`/thank-you?name=${encodeURIComponent(formData.name || "Trader")}&course=${encodeURIComponent(formData.course)}&city=${encodeURIComponent(formData.city || "India")}&pass=${encodeURIComponent(passId.replace("FLIP-", ""))}`}
+                        className="w-full sm:w-auto px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                      >
+                        <span>View Official Pass & Next Steps</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                      <button
+                        onClick={() => setIsSuccess(false)}
+                        className="w-full sm:w-auto px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl cursor-pointer"
+                      >
+                        Book Another Seat
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-3.5 text-xs sm:text-sm">
@@ -797,17 +852,30 @@ export default function FinlipSecurityLandingPage() {
 
                 <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3">
                   <span className="text-xs text-slate-500 font-medium">
-                    Admission by Application Only
+                    {c.id === "starter" ? "Zero AMC Demat Account Available" : "Admission by Application Only"}
                   </span>
 
-                  <button
-                    type="button"
-                    onClick={() => scrollToForm(c.title)}
-                    className="w-full sm:w-auto px-6 py-2.5 rounded-xl font-bold text-xs text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95"
-                  >
-                    <span>Select & Get Free Demo</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                  <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+                    {c.id === "starter" && (
+                      <a
+                        href="https://choiceindia.com/register?refercode=SVBK&source=Q0hPSUNFX0NPTk5FQ1Q="
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full sm:w-auto px-4 py-2.5 rounded-xl font-bold text-xs text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
+                      >
+                        <span>Open Demat Account</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => scrollToForm(c.title)}
+                      className="w-full sm:w-auto px-6 py-2.5 rounded-xl font-bold text-xs text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95"
+                    >
+                      <span>Select & Get Free Demo</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -1089,6 +1157,32 @@ export default function FinlipSecurityLandingPage() {
           Book Free Demo
         </button>
       </div>
+
+      {/* Official Broking Partner Demat Section */}
+      <section className="py-8 bg-blue-50/70 border-t border-blue-100 text-center">
+        <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-center sm:text-left">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-blue-700 font-mono">
+              OFFICIAL BROKING PARTNER
+            </span>
+            <h3 className="text-base font-bold text-slate-900 mt-0.5">
+              Ready to Practice Live? Open Your Free Demat Account
+            </h3>
+            <p className="text-xs text-slate-600">
+              Fast paperless account opening with Choice Broking. Quick KYC verification.
+            </p>
+          </div>
+          <a
+            href="https://choiceindia.com/register?refercode=SVBK&source=Q0hPSUNFX0NPTk5FQ1Q="
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-5 py-2.5 rounded-xl font-bold text-xs text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition-all inline-flex items-center gap-1.5 shrink-0 cursor-pointer"
+          >
+            <span>Open Demat Account</span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
+        </div>
+      </section>
 
       {/* Simple Clean Footer */}
       <footer className="py-8 bg-slate-900 text-slate-400 text-xs border-t border-slate-800 text-center">

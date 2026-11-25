@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadModal from "@/components/LeadModal";
@@ -27,12 +28,58 @@ import {
   FileCheck,
   Headphones,
   Zap,
+  ExternalLink,
 } from "lucide-react";
 
 export default function Home() {
+  const router = useRouter();
   const [modalOpen, setModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState("Book Free Live Masterclass");
   const [selectedCourseTab, setSelectedCourseTab] = useState("all");
+  const [heroForm, setHeroForm] = useState({
+    name: "",
+    phone: "",
+    language: "हिन्दी (Hindi)",
+    track: "Options & Greeks Mastery",
+  });
+  const [heroSubmitting, setHeroSubmitting] = useState(false);
+
+  const handleHeroSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setHeroSubmitting(true);
+
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: heroForm.name,
+          phone: heroForm.phone,
+          course: heroForm.track,
+          city: heroForm.language,
+          experience: "Beginner",
+          source: "Homepage Hero Fast-Track",
+        }),
+      });
+
+      const data = await res.json();
+      const pass = data.passId ? data.passId.replace("FLIP-", "") : "PASS-5821";
+      router.push(
+        `/thank-you?name=${encodeURIComponent(heroForm.name)}&course=${encodeURIComponent(
+          heroForm.track
+        )}&city=${encodeURIComponent(heroForm.language)}&pass=${encodeURIComponent(pass)}`
+      );
+    } catch (err) {
+      console.error(err);
+      router.push(
+        `/thank-you?name=${encodeURIComponent(heroForm.name)}&course=${encodeURIComponent(
+          heroForm.track
+        )}`
+      );
+    } finally {
+      setHeroSubmitting(false);
+    }
+  };
 
   const openLeadModal = (title = "Book Free Live Masterclass") => {
     setModalTitle(title);
@@ -174,22 +221,33 @@ export default function Home() {
               </div>
 
               {/* Call to Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-4">
                 <button
                   onClick={() => openLeadModal("Book Free Live Masterclass")}
-                  className="w-full sm:w-auto px-7 py-3.5 rounded-xl font-bold text-sm text-white bg-emerald-600 hover:bg-emerald-700 shadow-lg shadow-emerald-600/25 active:scale-95 transition-all flex items-center justify-center gap-2 group"
+                  className="w-full sm:w-auto px-6 py-3.5 rounded-xl font-bold text-sm text-white bg-emerald-600 hover:bg-emerald-700 shadow-lg shadow-emerald-600/25 active:scale-95 transition-all flex items-center justify-center gap-2 group cursor-pointer"
                 >
                   <Sparkles className="w-4 h-4 text-white" />
                   <span>Book Free Live Demo Class</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
 
+                <a
+                  href="https://choiceindia.com/register?refercode=SVBK&source=Q0hPSUNFX0NPTk5FQ1Q="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto px-5 py-3.5 rounded-xl font-bold text-sm text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-all text-center flex items-center justify-center gap-2 shadow-2xs cursor-pointer"
+                  title="Open Free Demat Account with Choice"
+                >
+                  <span>Open Demat Account</span>
+                  <ExternalLink className="w-4 h-4 text-blue-600" />
+                </a>
+
                 <Link
                   href="/finlip-security-academy"
-                  className="w-full sm:w-auto px-6 py-3.5 rounded-xl font-semibold text-sm text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 hover:border-slate-400 transition-all text-center flex items-center justify-center gap-2 shadow-2xs"
+                  className="w-full sm:w-auto px-5 py-3.5 rounded-xl font-semibold text-sm text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 hover:border-slate-400 transition-all text-center flex items-center justify-center gap-2 shadow-2xs"
                 >
                   <BookOpen className="w-4 h-4 text-slate-500" />
-                  <span>View All Course Details</span>
+                  <span>View All Courses</span>
                 </Link>
               </div>
 
@@ -237,10 +295,7 @@ export default function Home() {
                 </p>
 
                 <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    openLeadModal("Live Masterclass Fast-Track Reservation");
-                  }}
+                  onSubmit={handleHeroSubmit}
                   className="space-y-3.5 text-xs sm:text-sm"
                 >
                   <div>
@@ -248,6 +303,8 @@ export default function Home() {
                     <input
                       type="text"
                       required
+                      value={heroForm.name}
+                      onChange={(e) => setHeroForm({ ...heroForm, name: e.target.value })}
                       placeholder="e.g. Vikram Malhotra"
                       className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-emerald-600 transition-colors"
                     />
@@ -259,6 +316,8 @@ export default function Home() {
                       type="tel"
                       required
                       pattern="[0-9]{10}"
+                      value={heroForm.phone}
+                      onChange={(e) => setHeroForm({ ...heroForm, phone: e.target.value })}
                       placeholder="10-digit mobile number"
                       className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-emerald-600 transition-colors"
                     />
@@ -267,7 +326,11 @@ export default function Home() {
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-slate-700 font-medium mb-1">Language</label>
-                      <select className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-slate-900 focus:bg-white focus:outline-none focus:border-emerald-600">
+                      <select
+                        value={heroForm.language}
+                        onChange={(e) => setHeroForm({ ...heroForm, language: e.target.value })}
+                        className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-slate-900 focus:bg-white focus:outline-none focus:border-emerald-600"
+                      >
                         <option>हिन्दी (Hindi)</option>
                         <option>English</option>
                         <option>தமிழ் (Tamil)</option>
@@ -281,7 +344,11 @@ export default function Home() {
 
                     <div>
                       <label className="block text-slate-700 font-medium mb-1">Interest Track</label>
-                      <select className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-slate-900 focus:bg-white focus:outline-none focus:border-emerald-600">
+                      <select
+                        value={heroForm.track}
+                        onChange={(e) => setHeroForm({ ...heroForm, track: e.target.value })}
+                        className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-slate-900 focus:bg-white focus:outline-none focus:border-emerald-600"
+                      >
                         <option>Options & Greeks Mastery</option>
                         <option>Technical Analysis Pro</option>
                         <option>Algo Trading</option>
@@ -292,9 +359,10 @@ export default function Home() {
 
                   <button
                     type="submit"
-                    className="w-full mt-2 py-3.5 rounded-xl font-bold text-sm text-white bg-emerald-600 hover:bg-emerald-700 shadow-md shadow-emerald-600/20 active:scale-98 transition-all flex items-center justify-center gap-2"
+                    disabled={heroSubmitting}
+                    className="w-full mt-2 py-3.5 rounded-xl font-bold text-sm text-white bg-emerald-600 hover:bg-emerald-700 shadow-md shadow-emerald-600/20 active:scale-98 transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
                   >
-                    <span>Instant Free Registration</span>
+                    <span>{heroSubmitting ? "Securing Seat..." : "Instant Free Registration"}</span>
                     <ChevronRight className="w-4 h-4" />
                   </button>
 
@@ -471,7 +539,19 @@ export default function Home() {
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-2 w-full sm:w-auto">
+                  <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+                    {c.id === "beginner" && (
+                      <a
+                        href="https://choiceindia.com/register?refercode=SVBK&source=Q0hPSUNFX0NPTk5FQ1Q="
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full sm:w-auto px-4 py-2.5 rounded-xl font-bold text-xs text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-colors shadow-2xs inline-flex items-center justify-center gap-1.5 cursor-pointer"
+                        title="Open Free Demat Account with Choice"
+                      >
+                        <span>Open Demat Account</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    )}
                     <button
                       type="button"
                       onClick={() => openLeadModal(`Enrollment for ${c.title}`)}

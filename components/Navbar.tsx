@@ -14,6 +14,7 @@ import {
   Award,
   Sparkles,
   ArrowRight,
+  ExternalLink,
 } from "lucide-react";
 
 interface NavbarProps {
@@ -216,10 +217,20 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
           </nav>
 
           {/* Action Buttons */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2.5">
+            <a
+              href="https://choiceindia.com/register?refercode=SVBK&source=Q0hPSUNFX0NPTk5FQ1Q="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl font-bold text-xs text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-all cursor-pointer shadow-2xs"
+              title="Open Demat Account with Choice Broking"
+            >
+              <span>Open Demat Account</span>
+              <ExternalLink className="w-3.5 h-3.5 text-blue-600" />
+            </a>
             <button
               onClick={() => handleCallbackClick("Free Consultation Call")}
-              className="text-xs font-semibold text-slate-700 hover:text-slate-900 px-3.5 py-2 rounded-lg border border-slate-300 hover:border-slate-400 hover:bg-slate-50 transition-all cursor-pointer"
+              className="text-xs font-semibold text-slate-700 hover:text-slate-900 px-3.5 py-2 rounded-xl border border-slate-300 hover:border-slate-400 hover:bg-slate-50 transition-all cursor-pointer"
             >
               Request Callback
             </button>
@@ -234,6 +245,15 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
 
           {/* Mobile Menu Trigger */}
           <div className="flex lg:hidden items-center gap-2">
+            <a
+              href="https://choiceindia.com/register?refercode=SVBK&source=Q0hPSUNFX0NPTk5FQ1Q="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-2.5 py-1.5 text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200 rounded-lg inline-flex items-center gap-1 shadow-2xs"
+            >
+              <span>Demat</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
             <Link
               href="/finlip-security-academy"
               className="px-3 py-1.5 text-xs font-bold text-white bg-emerald-600 rounded-lg shadow-xs"
@@ -286,6 +306,16 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
           </div>
 
           <div className="pt-4 border-t border-slate-200 flex flex-col gap-2.5">
+            <a
+              href="https://choiceindia.com/register?refercode=SVBK&source=Q0hPSUNFX0NPTk5FQ1Q="
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full py-2.5 rounded-lg border border-blue-200 bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-sm text-center flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
+            >
+              <span>Open Demat Account (Choice)</span>
+              <ExternalLink className="w-4 h-4 text-blue-600" />
+            </a>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);

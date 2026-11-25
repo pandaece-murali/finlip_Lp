@@ -182,7 +182,7 @@ export default function AboutPage() {
               </p>
               <div className="pt-2 text-xs text-slate-500 space-y-1">
                 <p>Phone: +91 22 6854 1100</p>
-                <p>Email: mumbai.office@finlipsecurity.com</p>
+                <p>Email: finlipsecurity@gmail.com</p>
               </div>
             </div>
 
@@ -196,7 +196,7 @@ export default function AboutPage() {
               </p>
               <div className="pt-2 text-xs text-slate-500 space-y-1">
                 <p>Phone: +91 731 485 2000</p>
-                <p>Email: indore.campus@finlipsecurity.com</p>
+                <p>Email: finlipsecurity@gmail.com</p>
               </div>
             </div>
           </div>
